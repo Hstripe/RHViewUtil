@@ -40,7 +40,7 @@ class IPNDynamicLabelText: UIView {
         }
     }
     
-    var label = UILabel()
+    var label = UILabel.init(frame: CGRectMake(15, 28, 200, 15))
     var maxlength : NSInteger = 0
     var componentLength : NSInteger? = 0
     var secureTextEntry : Bool = false
@@ -57,17 +57,15 @@ class IPNDynamicLabelText: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let tap = UITapGestureRecognizer.init(target: self, action: Selector(refresh()))
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(refresh))
         self.addGestureRecognizer(tap);
         
         let frame : CGRect = self.bounds
-        
-        let label = UILabel.init(frame: CGRectMake(15, 28, 200, 15))
-        label.font = UIFont.systemFontOfSize(13)
-        label.text = self.placeHolder
-        label.textColor = kLabelColor
-        self.addSubview(label)
-        self.label = label
+
+        self.label.font = UIFont.systemFontOfSize(13)
+        self.label.text = self.placeHolder
+        self.label.textColor = kLabelColor
+        self.addSubview(self.label)
         
         let textView = IPNTextField.init(frame: CGRectMake(15, 26, frame.size.width-30, 15))
         textView.textColor = self.textColor
@@ -82,17 +80,13 @@ class IPNDynamicLabelText: UIView {
         textView.keyboardType = self.keyboardType!
         textView.returnKeyType = self.returnKeyType!
         
-        textView.addTarget(self, action: Selector(textFieldBeginEdit()), forControlEvents: UIControlEvents.EditingDidBegin)
-        textView.addTarget(self, action: Selector(textFieldEditing()), forControlEvents: UIControlEvents.EditingChanged)
-        textView.addTarget(self, action: Selector(textFieldEndEdit()), forControlEvents: UIControlEvents.EditingDidEnd)
-        textView.addTarget(self, action: Selector(textFieldEndEditOnExit()), forControlEvents: UIControlEvents.EditingDidEndOnExit)
+        textView.addTarget(self, action: #selector(textFieldBeginEdit(_:)), forControlEvents: UIControlEvents.EditingDidBegin)
+        textView.addTarget(self, action: #selector(textFieldEditing(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        textView.addTarget(self, action: #selector(textFieldEndEdit(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
+        textView.addTarget(self, action: #selector(textFieldEndEditOnExit(_:)), forControlEvents: UIControlEvents.EditingDidEndOnExit)
         
         self.addSubview(textView)
         self.textField = textView
-        
-//        let button = UIButton.init(type: UIButtonType.Custom)
-//        button.frame = CGRectMake(0, 0, 20, 20)
-//        button.addTarget(self, action: Selector(noHappy()), forControlEvents: UIControlEvents.TouchUpInside)
         
         let colorView = UIView.init(frame: CGRectMake(15, 46, frame.size.width-30, 0.5))
             
@@ -104,15 +98,15 @@ class IPNDynamicLabelText: UIView {
         self.addSubview(colorView)
     }
     
-    func tapEvent<T>(sender:T){
+    func tapEvent(sender: AnyObject){
         if self.isEditing == false {
             self.textField.becomeFirstResponder()
         }else{
-            self.textFieldEndEdit();
+            self.textFieldEndEdit(sender);
         }
     }
     
-    func textFieldBeginEdit<T>(sender: T){
+    func textFieldBeginEdit(sender: AnyObject){
         self.isEditing = true
         self.setIsEditing(true)
         self.delegate?.textFieldBeginEdit(self)
@@ -124,16 +118,16 @@ class IPNDynamicLabelText: UIView {
         self.viewMask = foregroundView
     }
     
-    func textFieldEditing<T>(sender:T) {
+    func textFieldEditing(sender: AnyObject) {
         //self.textProcessing()
         self.delegate?.textFieldEditing(self)
     }
     
-    func textFieldEndEdit<T>(sender:T){
+    func textFieldEndEdit(sender: AnyObject){
         self.delegate?.textFieldEndEdit(self)
     }
     
-    func textFieldEndEditOnExit<T>(sender:T){
+    func textFieldEndEditOnExit(sender: AnyObject){
         self.delegate?.textFieldEndEditOnExit(self)
     }
     
