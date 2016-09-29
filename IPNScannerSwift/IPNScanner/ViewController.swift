@@ -8,7 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController,UIScrollViewDelegate {
+class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate {
+    
+    
+    @IBOutlet weak var textFieldTest: IPNDynamicLabelText!
+    
+    @IBOutlet weak var textFieldPassword: IPNDynamicLabelText!
     
     
     var scrollView : UIScrollView?
@@ -21,7 +26,32 @@ class ViewController: UIViewController,UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         width = self.view.frame.size.width
-        self.createUI()
+        textFieldTest.delegate = self
+        textFieldTest.maxlength = 20
+        textFieldTest.returnKeyType = UIReturnKeyType.Next
+        textFieldTest.placeHolder = "用户名"
+        textFieldPassword.delegate = self
+        textFieldPassword.maxlength = 20
+        textFieldPassword.returnKeyType = UIReturnKeyType.Done
+        textFieldPassword.placeHolder = "密码"
+        textFieldPassword.secureTextEntry = true
+        // self.createUI()
+    }
+    
+    func textFieldBeginEdit<T>(sender: T) {
+        
+    }
+    
+    func textFieldEndEdit<T>(sender: T) {
+        
+    }
+    
+    func textFieldEditing<T>(sender: T) {
+        
+    }
+    
+    func textFieldEndEditOnExit<T>(sender: T) {
+        
     }
     
     func createUI(){
@@ -41,7 +71,6 @@ class ViewController: UIViewController,UIScrollViewDelegate {
         scrollView.addSubview(self.view1!)
         scrollView.addSubview(self.view2!)
         scrollView.addSubview(self.view3!)
-        
         self.scrollView = scrollView
     }
     
