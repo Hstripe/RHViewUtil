@@ -82,7 +82,7 @@ class IPNDynamicLabelText: UIView {
         textView.keyboardType = self.keyboardType!
         textView.returnKeyType = self.returnKeyType!
         
-        textView.addTarget(self, action: Selector(noHappy()), forControlEvents: UIControlEvents.EditingDidBegin)
+        textView.addTarget(self, action: Selector(textFieldBeginEdit()), forControlEvents: UIControlEvents.EditingDidBegin)
         textView.addTarget(self, action: Selector(textFieldEditing()), forControlEvents: UIControlEvents.EditingChanged)
         textView.addTarget(self, action: Selector(textFieldEndEdit()), forControlEvents: UIControlEvents.EditingDidEnd)
         textView.addTarget(self, action: Selector(textFieldEndEditOnExit()), forControlEvents: UIControlEvents.EditingDidEndOnExit)
@@ -90,6 +90,9 @@ class IPNDynamicLabelText: UIView {
         self.addSubview(textView)
         self.textField = textView
         
+//        let button = UIButton.init(type: UIButtonType.Custom)
+//        button.frame = CGRectMake(0, 0, 20, 20)
+//        button.addTarget(self, action: Selector(noHappy()), forControlEvents: UIControlEvents.TouchUpInside)
         
         let colorView = UIView.init(frame: CGRectMake(15, 46, frame.size.width-30, 0.5))
             
@@ -99,7 +102,6 @@ class IPNDynamicLabelText: UIView {
             colorView.backgroundColor = kWhiteColor
         }
         self.addSubview(colorView)
-        
     }
     
     func tapEvent<T>(sender:T){
@@ -110,19 +112,7 @@ class IPNDynamicLabelText: UIView {
         }
     }
     
-//    func textViewDidBeginEditing(textView: UITextView) {
-//        self.isEditing = true
-//        self.setIsEditing(true)
-//        self.delegate?.textFieldBeginEdit(self)
-//        
-//        let foregroundView = UIView.init(frame: CGRectMake(15, 26, self.bounds.size.width-50, 15))
-//        foregroundView.backgroundColor = UIColor.clearColor()
-//        foregroundView.userInteractionEnabled = true;
-//        self.addSubview(foregroundView)
-//        self.viewMask = foregroundView
-//    }
-    
-    func  noHappy() {
+    func textFieldBeginEdit<T>(sender: T){
         self.isEditing = true
         self.setIsEditing(true)
         self.delegate?.textFieldBeginEdit(self)
@@ -133,19 +123,6 @@ class IPNDynamicLabelText: UIView {
         self.addSubview(foregroundView)
         self.viewMask = foregroundView
     }
-    
-    
-//    func textFieldBeginEdit<T>(sender: T){
-//        self.isEditing = true
-//        self.setIsEditing(true)
-//        self.delegate?.textFieldBeginEdit(self)
-//        
-//        let foregroundView = UIView.init(frame: CGRectMake(15, 26, self.bounds.size.width-50, 15))
-//        foregroundView.backgroundColor = UIColor.clearColor()
-//        foregroundView.userInteractionEnabled = true;
-//        self.addSubview(foregroundView)
-//        self.viewMask = foregroundView
-//    }
     
     func textFieldEditing<T>(sender:T) {
         //self.textProcessing()
