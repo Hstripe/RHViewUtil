@@ -53,7 +53,7 @@ class IPNDynamicLabelText: UIView {
     var delegate : IPNTextEditDelegate?
     
     var viewMask : UIView?
-    var isEditing : Bool?
+    var isEditing : Bool = false
     
     
     override func layoutSubviews() {
@@ -103,21 +103,21 @@ class IPNDynamicLabelText: UIView {
     }
     
     func tapEvent(sender: AnyObject){
-        if self.isEditing == nil {
+        if self.isEditing == false {
             self.textField!.becomeFirstResponder()
-            print("false")
+            
         }else{
-            self.textField?.resignFirstResponder()
-            self.refreshStatus()
-            self.isEditing = nil
-            print("点击点击")
+            //self.textField?.resignFirstResponder()
+            //self.refreshStatus()
+            self.isEditing = false
+//            print("点击点击")
 
         }
     }
     
     func textFieldBeginEdit(sender: AnyObject){
         self.isEditing = true
-        self.switchEditing(true)
+        self.switchEditStaus()
         self.delegate?.textFieldBeginEdit(self)
         
         let foregroundView = UIView.init(frame: CGRectMake(15, 26, self.bounds.size.width-50, 15))
@@ -133,8 +133,12 @@ class IPNDynamicLabelText: UIView {
     }
     
     func textFieldEndEdit(sender: AnyObject){
-        self.refreshStatus()
+//        self.refreshStatus()
+        self.isEditing = false
+        self.switchEditStaus()
+        self.isEditing = true
         self.delegate?.textFieldEndEdit(self)
+        
     }
     
     func textFieldEndEditOnExit(sender: AnyObject){
@@ -172,18 +176,35 @@ class IPNDynamicLabelText: UIView {
         }
     }
     
-
-     func switchEditing(isEditing:Bool){
-        let animationDuration = 0.30
-        UIView.beginAnimations("MoveLabel", context: nil)
-        UIView.setAnimationDuration(animationDuration)
-        if self.isEditing == false {
-            self.label.frame = CGRectMake(15, 28, 200, 15)
-        }else{
+    func switchEditStaus() {
+        let switchStatus = self.textField?.text?.isEmpty
+        let annimationDuration = 0.30
+        UIView.beginAnimations("moveLabel", context: nil)
+        UIView.setAnimationDuration(annimationDuration)
+        
+        if self.isEditing == true {
             self.label.frame = CGRectMake(15, 5, 200, 15)
+        }else{
+            if switchStatus == true {
+                self.label.frame = CGRectMake(15, 28, 200, 15)
+            }else{
+                self.label.frame = CGRectMake(15, 5, 200, 15)
+            }
         }
         UIView.commitAnimations()
     }
+
+//     func switchEditing(isEditing:Bool){
+//        let animationDuration = 0.30
+//        UIView.beginAnimations("MoveLabel", context: nil)
+//        UIView.setAnimationDuration(animationDuration)
+//        if isEditing == false {
+//            self.label.frame = CGRectMake(15, 28, 200, 15)
+//        }else{
+//            self.label.frame = CGRectMake(15, 5, 200, 15)
+//        }
+//        UIView.commitAnimations()
+//    }
 
 
     // 界面刷新，删掉蒙层，标签还原
@@ -191,9 +212,7 @@ class IPNDynamicLabelText: UIView {
         self.isEditing = false
         self.viewMask?.removeFromSuperview()
         
-        if (self.textField!.text?.isEmpty)! {
-            self.switchEditing(false)
-        }
+        self.switchEditStaus()
     }
     
 

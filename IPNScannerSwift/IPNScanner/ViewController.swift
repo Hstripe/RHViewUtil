@@ -44,8 +44,9 @@ class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate 
     }
     
     func textFieldEndEdit(sender: AnyObject) {
-//        self.textFieldTest.resignFirstResponder()
-////        self.textFieldTest = nil
+        self.textFieldTest.resignFirstResponder()
+ //       self.textFieldTest.refreshStatus()
+ //        self.textFieldTest = nil
     }
     
     func textFieldEditing(sender: AnyObject) {
@@ -101,6 +102,7 @@ class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate 
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
+//        textFieldTest.isEditing = false
     }
 
 }
