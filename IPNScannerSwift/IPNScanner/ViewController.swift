@@ -30,28 +30,32 @@ class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate 
         textFieldTest.maxlength = 20
         textFieldTest.returnKeyType = UIReturnKeyType.Next
         textFieldTest.placeHolder = "用户名"
+    
         textFieldPassword.delegate = self
         textFieldPassword.maxlength = 20
         textFieldPassword.returnKeyType = UIReturnKeyType.Done
         textFieldPassword.placeHolder = "密码"
         textFieldPassword.secureTextEntry = true
-        // self.createUI()
+    
     }
     
-    func textFieldBeginEdit<T>(sender: T) {
+    func textFieldBeginEdit(sender: AnyObject) {
         
     }
     
-    func textFieldEndEdit<T>(sender: T) {
-        
+    func textFieldEndEdit(sender: AnyObject) {
+//        self.textFieldTest.resignFirstResponder()
+////        self.textFieldTest = nil
     }
     
-    func textFieldEditing<T>(sender: T) {
-        
+    func textFieldEditing(sender: AnyObject) {
+       
     }
     
-    func textFieldEndEditOnExit<T>(sender: T) {
-        
+    func textFieldEndEditOnExit(sender: AnyObject) {
+        if self.textFieldTest.textField == sender as! NSObject {
+            self.textFieldPassword.becomeFirstResponder()
+        }
     }
     
     func createUI(){
@@ -95,6 +99,9 @@ class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate 
         // Dispose of any resources that can be recreated.
     }
 
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 
 }
 

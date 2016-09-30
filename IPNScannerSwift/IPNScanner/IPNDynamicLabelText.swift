@@ -9,32 +9,34 @@
 import UIKit
 
 protocol IPNTextEditDelegate {
-    func textFieldBeginEdit<T>(sender:T)
-    func textFieldEditing<T>(sender:T)
-    func textFieldEndEdit<T>(sender:T)
-    func textFieldEndEditOnExit<T>(sender:T)
+    func textFieldBeginEdit(sender: AnyObject)
+    func textFieldEditing(sender: AnyObject)
+    func textFieldEndEdit(sender: AnyObject)
+    func textFieldEndEditOnExit(sender: AnyObject)
 }
+
+
 
 class IPNDynamicLabelText: UIView {
     
     var text : NSString {
         get{
             if self.componentLength == 0 {
-                return self.textField.text!
+                return self.textField!.text!
             }else{
-                return ((self.textField.text)! as NSString).stringByReplacingOccurrencesOfString(" ", withString: "")
+                return ((self.textField!.text)! as NSString).stringByReplacingOccurrencesOfString(" ", withString: "")
             }
         }
     }
     
-    var textField = UITextField()
+    var textField : UITextField? = nil
     
     var textLength : NSInteger {
         get{
             if self.componentLength == 0 {
-                return (self.textField.text?.characters.count)!
+                return (self.textField!.text?.characters.count)!
             }else{
-                let str : NSString = ((self.textField.text)! as NSString).stringByReplacingOccurrencesOfString(" ", withString: "")
+                let str : NSString = ((self.textField!.text)! as NSString).stringByReplacingOccurrencesOfString(" ", withString: "")
                 return str.length
             }
         }
@@ -57,58 +59,65 @@ class IPNDynamicLabelText: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let tap = UITapGestureRecognizer.init(target: self, action: #selector(refresh))
-        self.addGestureRecognizer(tap);
-        
-        let frame : CGRect = self.bounds
-
-        self.label.font = UIFont.systemFontOfSize(13)
-        self.label.text = self.placeHolder
-        self.label.textColor = kLabelColor
-        self.addSubview(self.label)
-        
-        let textView = IPNTextField.init(frame: CGRectMake(15, 26, frame.size.width-30, 15))
-        textView.textColor = self.textColor
-        textView.font = UIFont.systemFontOfSize(14)
-        if(self.textColor == true){
-            textView.textColor = self.textColor
-        }else{
-            textView.textColor = kWhiteColor
-        }
-        textView.secureTextEntry = self.secureTextEntry
-        textView.clearButtonMode = UITextFieldViewMode.WhileEditing
-        textView.keyboardType = self.keyboardType!
-        textView.returnKeyType = self.returnKeyType!
-        
-        textView.addTarget(self, action: #selector(textFieldBeginEdit(_:)), forControlEvents: UIControlEvents.EditingDidBegin)
-        textView.addTarget(self, action: #selector(textFieldEditing(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        textView.addTarget(self, action: #selector(textFieldEndEdit(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
-        textView.addTarget(self, action: #selector(textFieldEndEditOnExit(_:)), forControlEvents: UIControlEvents.EditingDidEndOnExit)
-        
-        self.addSubview(textView)
-        self.textField = textView
-        
-        let colorView = UIView.init(frame: CGRectMake(15, 46, frame.size.width-30, 0.5))
+        if self.textField == nil {
+            let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapEvent(_:)))
+            self.addGestureRecognizer(tap)
             
-        if self.textColor == true {
-            colorView.backgroundColor = self.textColor
-        }else{
-            colorView.backgroundColor = kWhiteColor
+            let frame : CGRect = self.bounds
+            
+            self.label.font = UIFont.systemFontOfSize(13)
+            self.label.text = self.placeHolder
+            self.label.textColor = kLabelTextColor
+            self.addSubview(self.label)
+            
+            let textView = IPNTextField.init(frame: CGRectMake(15, 26, frame.size.width-30, 15))
+            textView.textColor = self.textColor
+            textView.font = UIFont.systemFontOfSize(14)
+            if(self.textColor == true){
+                textView.textColor = self.textColor
+            }else{
+                textView.textColor = kWhiteColor
+            }
+            textView.secureTextEntry = self.secureTextEntry
+            textView.clearButtonMode = UITextFieldViewMode.WhileEditing
+            textView.keyboardType = self.keyboardType!
+            textView.returnKeyType = self.returnKeyType!
+            
+            textView.addTarget(self, action: #selector(textFieldBeginEdit(_:)), forControlEvents: UIControlEvents.EditingDidBegin)
+            textView.addTarget(self, action: #selector(textFieldEditing(_:)), forControlEvents: UIControlEvents.EditingChanged)
+            textView.addTarget(self, action: #selector(textFieldEndEdit(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
+            textView.addTarget(self, action: #selector(textFieldEndEditOnExit(_:)), forControlEvents: UIControlEvents.EditingDidEndOnExit)
+            
+            self.addSubview(textView)
+            self.textField = textView
+            
+            let colorView = UIView.init(frame: CGRectMake(15, 46, frame.size.width-30, 0.5))
+            
+            if self.textColor == true {
+                colorView.backgroundColor = self.textColor
+            }else{
+                colorView.backgroundColor = kWhiteColor
+            }
+            self.addSubview(colorView)
         }
-        self.addSubview(colorView)
     }
     
     func tapEvent(sender: AnyObject){
-        if self.isEditing == false {
-            self.textField.becomeFirstResponder()
+        if self.isEditing == nil {
+            self.textField!.becomeFirstResponder()
+            print("false")
         }else{
-            self.textFieldEndEdit(sender);
+            self.textField?.resignFirstResponder()
+            self.refreshStatus()
+            self.isEditing = nil
+            print("点击点击")
+
         }
     }
     
     func textFieldBeginEdit(sender: AnyObject){
         self.isEditing = true
-        self.setIsEditing(true)
+        self.switchEditing(true)
         self.delegate?.textFieldBeginEdit(self)
         
         let foregroundView = UIView.init(frame: CGRectMake(15, 26, self.bounds.size.width-50, 15))
@@ -124,6 +133,7 @@ class IPNDynamicLabelText: UIView {
     }
     
     func textFieldEndEdit(sender: AnyObject){
+        self.refreshStatus()
         self.delegate?.textFieldEndEdit(self)
     }
     
@@ -134,8 +144,8 @@ class IPNDynamicLabelText: UIView {
     // 对textView中的输入进行文字处理
     func textProcessing() {
         
-        var textFieldTxt = self.textField.text
-        let txtLength = self.textField.text?.characters.count
+        var textFieldTxt = self.textField!.text
+        let txtLength = self.textField!.text?.characters.count
         
         if self.componentLength == 0 {  // 无分割
             if self.maxlength > 0 && self.textLength > self.maxlength { // 默认键盘
@@ -163,11 +173,11 @@ class IPNDynamicLabelText: UIView {
     }
     
 
-     func setIsEditing(isEditing:Bool){
+     func switchEditing(isEditing:Bool){
         let animationDuration = 0.30
         UIView.beginAnimations("MoveLabel", context: nil)
         UIView.setAnimationDuration(animationDuration)
-        if isEditing == false {
+        if self.isEditing == false {
             self.label.frame = CGRectMake(15, 28, 200, 15)
         }else{
             self.label.frame = CGRectMake(15, 5, 200, 15)
@@ -177,14 +187,13 @@ class IPNDynamicLabelText: UIView {
 
 
     // 界面刷新，删掉蒙层，标签还原
-    func refresh() {
-        isEditing = false
-        self.setIsEditing(false)
-//        self.viewMask?.removeFromSuperview()
-    
-//        if (self.textField!.text?.isEmpty) != nil {
-//
-//        }
+    func refreshStatus() {
+        self.isEditing = false
+        self.viewMask?.removeFromSuperview()
+        
+        if (self.textField!.text?.isEmpty)! {
+            self.switchEditing(false)
+        }
     }
     
 
