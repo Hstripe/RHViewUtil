@@ -36,7 +36,15 @@ class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate 
         textFieldPassword.returnKeyType = UIReturnKeyType.Done
         textFieldPassword.placeHolder = "密码"
         textFieldPassword.secureTextEntry = true
+        
+        // 添加手势退出编辑状态，不要能用touch方法替换，响应链传递机制会导致编辑状态错误
+        let tapTouch = UITapGestureRecognizer.init(target: self, action: #selector(tapFunction))
+        self.view.addGestureRecognizer(tapTouch)
     
+    }
+    
+    func tapFunction() {
+        self.view.endEditing(true)
     }
     
     func textFieldBeginEdit(sender: AnyObject) {
@@ -44,9 +52,7 @@ class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate 
     }
     
     func textFieldEndEdit(sender: AnyObject) {
-        self.textFieldTest.resignFirstResponder()
- //       self.textFieldTest.refreshStatus()
- //        self.textFieldTest = nil
+        
     }
     
     func textFieldEditing(sender: AnyObject) {
@@ -98,11 +104,6 @@ class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.view.endEditing(true)
-//        textFieldTest.isEditing = false
     }
 
 }
