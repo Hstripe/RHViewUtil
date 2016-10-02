@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate {
+class ViewController: UIViewController,UIScrollViewDelegate,RHTextEditDelegate {
     
     
-    @IBOutlet weak var textFieldTest: IPNDynamicLabelText!
+    @IBOutlet weak var textFieldTest: RHDynamicLoginText!
     
-    @IBOutlet weak var textFieldPassword: IPNDynamicLabelText!
+    @IBOutlet weak var textFieldPassword: RHDynamicLoginText!
     
     
     var scrollView : UIScrollView?

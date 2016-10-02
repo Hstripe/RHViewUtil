@@ -1,8 +1,8 @@
 //
-//  IPNColor.swift
+//  RHColor.swift
 //  IPNScanner
 //
-//  Created by 黄睿 on 2016/9/28.
+//  Created by 黄睿 on 16/10/2.
 //  Copyright © 2016年 iPayNow. All rights reserved.
 //
 

@@ -1,14 +1,14 @@
 //
-//  IPNDynamicLabelText.swift
+//  RHDynamicLoginText.swift
 //  IPNScanner
 //
-//  Created by 黄睿 on 2016/8/25.
+//  Created by 黄睿 on 16/10/2.
 //  Copyright © 2016年 iPayNow. All rights reserved.
 //
 
 import UIKit
 
-protocol IPNTextEditDelegate {
+protocol RHTextEditDelegate {
     func textFieldBeginEdit(sender: AnyObject)
     func textFieldEditing(sender: AnyObject)
     func textFieldEndEdit(sender: AnyObject)
@@ -17,7 +17,7 @@ protocol IPNTextEditDelegate {
 
 
 
-class IPNDynamicLabelText: UIView {
+class RHDynamicLoginText: UIView {
     
     var text : NSString {
         get{
@@ -50,7 +50,7 @@ class IPNDynamicLabelText: UIView {
     var keyboardType : UIKeyboardType? = UIKeyboardType.Default
     var returnKeyType : UIReturnKeyType? = UIReturnKeyType.Default
     var placeHolder : String = ""
-    var delegate : IPNTextEditDelegate?
+    var delegate : RHTextEditDelegate?
     
     var viewMask : UIView?
     var isEditing : Bool = false
@@ -70,7 +70,7 @@ class IPNDynamicLabelText: UIView {
             self.label.textColor = kLabelTextColor
             self.addSubview(self.label)
             
-            let textView = IPNTextField.init(frame: CGRectMake(15, 26, frame.size.width-30, 15))
+            let textView = RHTextField.init(frame: CGRectMake(15, 26, frame.size.width-30, 15))
             textView.textColor = self.textColor
             textView.font = UIFont.systemFontOfSize(14)
             if(self.textColor == true){
@@ -136,7 +136,7 @@ class IPNDynamicLabelText: UIView {
     func textFieldEndEditOnExit(sender: AnyObject){
         self.delegate?.textFieldEndEditOnExit(self)
     }
-   
+    
     
     /**
      输入内容处理
@@ -149,7 +149,7 @@ class IPNDynamicLabelText: UIView {
         if self.componentLength == 0 {  // 无分割
             if self.maxlength > 0 && self.textLength > self.maxlength { // 默认键盘
                 textFieldTxt = ((textFieldTxt! as NSString).substringToIndex(self.maxlength) as String)
-            
+                
             }else{
                 let pureStr : NSString = (textFieldTxt! as NSString).stringByReplacingOccurrencesOfString(" ", withString: "")
                 
@@ -194,5 +194,5 @@ class IPNDynamicLabelText: UIView {
         }
         UIView.commitAnimations()
     }
-
+    
 }

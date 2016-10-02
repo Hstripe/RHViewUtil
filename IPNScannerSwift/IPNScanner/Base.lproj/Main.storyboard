@@ -17,11 +17,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dd7-BC-6H0" customClass="IPNDynamicLabelText" customModule="IPNScanner" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dd7-BC-6H0" customClass="RHDynamicLoginText" customModule="IPNScanner" customModuleProvider="target">
                                 <rect key="frame" x="47" y="133" width="271" height="73"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oSz-qf-0P7" customClass="IPNDynamicLabelText" customModule="IPNScanner" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oSz-qf-0P7" customClass="RHDynamicLoginText" customModule="IPNScanner" customModuleProvider="target">
                                 <rect key="frame" x="47" y="214" width="271" height="73"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -30,8 +30,8 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="textFieldPassword" destination="oSz-qf-0P7" id="jQM-E9-VKU"/>
-                        <outlet property="textFieldTest" destination="dd7-BC-6H0" id="Krl-2D-GCe"/>
+                        <outlet property="textFieldPassword" destination="oSz-qf-0P7" id="zkZ-ab-fYF"/>
+                        <outlet property="textFieldTest" destination="dd7-BC-6H0" id="5A0-ty-5y6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
