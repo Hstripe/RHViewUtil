@@ -42,7 +42,7 @@ class RHDynamicLoginText: UIView {
         }
     }
     
-    var label = UILabel.init(frame: CGRectMake(15, 28, 200, 15))
+    var label = UILabel()
     var maxlength : NSInteger = 0
     var componentLength : NSInteger? = 0
     var secureTextEntry : Bool = false
@@ -65,10 +65,12 @@ class RHDynamicLoginText: UIView {
             
             let frame : CGRect = self.bounds
             
-            self.label.font = UIFont.systemFontOfSize(13)
-            self.label.text = self.placeHolder
-            self.label.textColor = kLabelTextColor
-            self.addSubview(self.label)
+            let label = UILabel.init(frame: CGRectMake(15, 28, 200, 15))
+            label.font = UIFont.systemFontOfSize(13)
+            label.text = self.placeHolder
+            label.textColor = kLabelColor
+            self.addSubview(label)
+            self.label = label
             
             let textView = RHTextField.init(frame: CGRectMake(15, 26, frame.size.width-30, 15))
             textView.textColor = self.textColor
