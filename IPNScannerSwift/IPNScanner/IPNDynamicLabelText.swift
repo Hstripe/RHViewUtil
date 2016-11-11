@@ -1,14 +1,13 @@
 //
-//  RHDynamicLoginText.swift
+//  IPNDynamicLabelText.swift
 //  IPNScanner
 //
-//  Created by 黄睿 on 16/10/2.
+//  Created by 黄睿 on 2016/8/25.
 //  Copyright © 2016年 iPayNow. All rights reserved.
 //
 
 import UIKit
 
-<<<<<<< HEAD:IPNScannerSwift/IPNScanner/IPNDynamicLabelText.swift
 protocol IPNTextEditDelegate: class {
     func textFieldBeginEdit(_ sender: AnyObject)
     func textFieldEditing(_ sender: AnyObject)
@@ -17,18 +16,6 @@ protocol IPNTextEditDelegate: class {
 }
 
 class IPNDynamicLabelText: UIView {
-=======
-protocol RHTextEditDelegate {
-    func textFieldBeginEdit(sender: AnyObject)
-    func textFieldEditing(sender: AnyObject)
-    func textFieldEndEdit(sender: AnyObject)
-    func textFieldEndEditOnExit(sender: AnyObject)
-}
-
-
-
-class RHDynamicLoginText: UIView {
->>>>>>> 6c9e7bf6b3ab7cbff639b1367a7aba20828ab4a0:IPNScannerSwift/IPNScanner/RHDynamicLoginText.swift
     
     var text : String {
         get{
@@ -54,20 +41,13 @@ class RHDynamicLoginText: UIView {
     }
     
     var label = UILabel()
-<<<<<<< HEAD:IPNScannerSwift/IPNScanner/IPNDynamicLabelText.swift
     var maxlength = 0
     var componentLength = 0
     var secureTextEntry = false
-=======
-    var maxlength : NSInteger = 0
-    var componentLength : NSInteger? = 0
-    var secureTextEntry : Bool = false
->>>>>>> 6c9e7bf6b3ab7cbff639b1367a7aba20828ab4a0:IPNScannerSwift/IPNScanner/RHDynamicLoginText.swift
     var textColor : UIColor?
     var keyboardType = UIKeyboardType.default
     var returnKeyType = UIReturnKeyType.default
     var placeHolder : String = ""
-<<<<<<< HEAD:IPNScannerSwift/IPNScanner/IPNDynamicLabelText.swift
     weak var delegate : IPNTextEditDelegate?
     
     var viewMask = UIView()
@@ -77,12 +57,6 @@ class RHDynamicLoginText: UIView {
     override func draw(_ rect: CGRect) {
         
     }
-=======
-    var delegate : RHTextEditDelegate?
-    
-    var viewMask : UIView?
-    var isEditing : Bool = false
->>>>>>> 6c9e7bf6b3ab7cbff639b1367a7aba20828ab4a0:IPNScannerSwift/IPNScanner/RHDynamicLoginText.swift
     
     
     override func layoutSubviews() {
@@ -94,7 +68,6 @@ class RHDynamicLoginText: UIView {
             
             let frame = self.bounds
             
-<<<<<<< HEAD:IPNScannerSwift/IPNScanner/IPNDynamicLabelText.swift
             let label = UILabel(frame: CGRect(x: 15, y: 28, width: 200, height: 15))
             label.font = UIFont.systemFont(ofSize: 13)
             label.text = self.placeHolder
@@ -103,16 +76,6 @@ class RHDynamicLoginText: UIView {
             self.label = label
             
             let textView = IPNTextField(frame: CGRect(x: 15, y: 26, width: frame.size.width-30, height: 15))
-=======
-            let label = UILabel.init(frame: CGRectMake(15, 28, 200, 15))
-            label.font = UIFont.systemFontOfSize(13)
-            label.text = self.placeHolder
-            label.textColor = kLabelColor
-            self.addSubview(label)
-            self.label = label
-            
-            let textView = RHTextField.init(frame: CGRectMake(15, 26, frame.size.width-30, 15))
->>>>>>> 6c9e7bf6b3ab7cbff639b1367a7aba20828ab4a0:IPNScannerSwift/IPNScanner/RHDynamicLoginText.swift
             textView.textColor = self.textColor
             textView.font = UIFont.systemFont(ofSize: 14)
             if(self.textColor != nil){
@@ -144,18 +107,14 @@ class RHDynamicLoginText: UIView {
         }
     }
     
-<<<<<<< HEAD:IPNScannerSwift/IPNScanner/IPNDynamicLabelText.swift
     // MARK: - TextFieldEvent
     
     func tapEvent(_ sender: AnyObject){
-=======
-    func tapEvent(sender: AnyObject){
->>>>>>> 6c9e7bf6b3ab7cbff639b1367a7aba20828ab4a0:IPNScannerSwift/IPNScanner/RHDynamicLoginText.swift
         if self.isEditing == false {
             self.textField!.becomeFirstResponder()
+            print("false")
         }else{
             self.textField?.resignFirstResponder()
-<<<<<<< HEAD:IPNScannerSwift/IPNScanner/IPNDynamicLabelText.swift
             self.refreshStatus()
             self.isEditing = false
             print("点击点击")
@@ -166,14 +125,6 @@ class RHDynamicLoginText: UIView {
     func textFieldBeginEdit(_ sender: AnyObject){
         self.isEditing = true
         self.switchEditing(true)
-=======
-            self.viewMask?.removeFromSuperview()
-        }
-    }
-    
-    func textFieldBeginEdit(sender: AnyObject){
-        self.switchEditStaus()
->>>>>>> 6c9e7bf6b3ab7cbff639b1367a7aba20828ab4a0:IPNScannerSwift/IPNScanner/RHDynamicLoginText.swift
         self.delegate?.textFieldBeginEdit(self)
         
         let foregroundView = UIView(frame: CGRect(x: 15, y: 26, width: self.bounds.size.width-50, height: 15))
@@ -188,25 +139,16 @@ class RHDynamicLoginText: UIView {
         self.delegate?.textFieldEditing(self)
     }
     
-<<<<<<< HEAD:IPNScannerSwift/IPNScanner/IPNDynamicLabelText.swift
     func textFieldEndEdit(_ sender: AnyObject){
         self.refreshStatus()
-=======
-    func textFieldEndEdit(sender: AnyObject){
-        self.switchEditStaus()
->>>>>>> 6c9e7bf6b3ab7cbff639b1367a7aba20828ab4a0:IPNScannerSwift/IPNScanner/RHDynamicLoginText.swift
         self.delegate?.textFieldEndEdit(self)
-        
     }
     
     func textFieldEndEditOnExit(_ sender: AnyObject){
         self.delegate?.textFieldEndEditOnExit(self)
     }
     
-    
-    /**
-     输入内容处理
-     */
+    // 对textView中的输入进行文字处理
     func textProcessing() {
         
         var textFieldTxt = self.textField!.text
@@ -214,7 +156,6 @@ class RHDynamicLoginText: UIView {
         
         if self.componentLength == 0 {  // 无分割
             if self.maxlength > 0 && self.textLength > self.maxlength { // 默认键盘
-<<<<<<< HEAD:IPNScannerSwift/IPNScanner/IPNDynamicLabelText.swift
                 textFieldTxt = textFieldTxt!.substring(to: (textFieldTxt?.index((textFieldTxt?.startIndex)!, offsetBy: self.maxlength))!)
             }
         }else{
@@ -229,16 +170,6 @@ class RHDynamicLoginText: UIView {
             if txtLength! > 0 {
                 if self.textLength > self.maxlength {
                     textFieldTxt = (textFieldTxt! as NSString).replacingCharacters(in: NSMakeRange(txtLength! - 1, 1), with: "")
-=======
-                textFieldTxt = ((textFieldTxt! as NSString).substringToIndex(self.maxlength) as String)
-                
-            }else{
-                let pureStr : NSString = (textFieldTxt! as NSString).stringByReplacingOccurrencesOfString(" ", withString: "")
-                
-                if pureStr.length % self.componentLength! == 1 && pureStr.length > 1 && textFieldTxt![(textFieldTxt!.endIndex)] != " " {
-                    let str = " \(pureStr.substringFromIndex(pureStr.length - 1))"
-                    textFieldTxt = (textFieldTxt! as NSString).stringByReplacingCharactersInRange(NSMakeRange(txtLength! - 1, 1), withString: str)
->>>>>>> 6c9e7bf6b3ab7cbff639b1367a7aba20828ab4a0:IPNScannerSwift/IPNScanner/RHDynamicLoginText.swift
                 }
                 
                 if (textFieldTxt! as NSString).substring(from: txtLength! - 1) == " " {
@@ -248,7 +179,6 @@ class RHDynamicLoginText: UIView {
         }
     }
     
-<<<<<<< HEAD:IPNScannerSwift/IPNScanner/IPNDynamicLabelText.swift
      // Mark: - InstanceMethods
      func switchEditing(_ isEditing:Bool){
         let animationDuration = 0.30
@@ -276,30 +206,6 @@ class RHDynamicLoginText: UIView {
             self.switchEditing(false)
         }
     }
-=======
-    /**
-     编辑状态切换
-     */
-    func switchEditStaus() {
-        let switchStatus = self.textField?.text?.isEmpty
-        let annimationDuration = 0.30
-        UIView.beginAnimations("moveLabel", context: nil)
-        UIView.setAnimationDuration(annimationDuration)
-        self.isEditing = !self.isEditing
-        
-        if self.isEditing == true {
-            self.label.frame = CGRectMake(15, 5, 200, 15)
-            
-        }else{
-            if switchStatus == true {
-                self.label.frame = CGRectMake(15, 28, 200, 15)
-            }else{
-                self.label.frame = CGRectMake(15, 5, 200, 15)
-            }
-            
-        }
-        UIView.commitAnimations()
-    }
->>>>>>> 6c9e7bf6b3ab7cbff639b1367a7aba20828ab4a0:IPNScannerSwift/IPNScanner/RHDynamicLoginText.swift
     
+
 }

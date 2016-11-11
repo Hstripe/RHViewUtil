@@ -13,16 +13,10 @@
 		AC070ED51D6DAB3D00D8AFF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC070ED41D6DAB3D00D8AFF6 /* Assets.xcassets */; };
 		AC070ED81D6DAB3D00D8AFF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC070ED61D6DAB3D00D8AFF6 /* LaunchScreen.storyboard */; };
 		AC070EE31D6DAB3D00D8AFF6 /* IPNScannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC070EE21D6DAB3D00D8AFF6 /* IPNScannerUITests.swift */; };
-<<<<<<< HEAD
 		AC47DDBF1DD5C09B00532433 /* IPNDynamicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC47DDBE1DD5C09B00532433 /* IPNDynamicButton.swift */; };
 		AC56341A1D992D4200CF8B8F /* IPNTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5634191D992D4200CF8B8F /* IPNTextField.swift */; };
 		ACE77BE31D6F056D008C3C7E /* IPNDynamicLabelText.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE77BE21D6F056D008C3C7E /* IPNDynamicLabelText.swift */; };
 		B305BA1C1D9D54F5000316F2 /* IPNColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B305BA1B1D9D54F5000316F2 /* IPNColor.swift */; };
-=======
-		B360BBE81DA11B0400A75B55 /* RHColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B360BBE71DA11B0400A75B55 /* RHColor.swift */; };
-		B360BBEA1DA11B9D00A75B55 /* RHTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B360BBE91DA11B9D00A75B55 /* RHTextField.swift */; };
-		B360BBEC1DA11C2800A75B55 /* RHDynamicLoginText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B360BBEB1DA11C2800A75B55 /* RHDynamicLoginText.swift */; };
->>>>>>> 6c9e7bf6b3ab7cbff639b1367a7aba20828ab4a0
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,16 +40,10 @@
 		AC070EDE1D6DAB3D00D8AFF6 /* IPNScannerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IPNScannerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC070EE21D6DAB3D00D8AFF6 /* IPNScannerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPNScannerUITests.swift; sourceTree = "<group>"; };
 		AC070EE41D6DAB3D00D8AFF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		AC47DDBE1DD5C09B00532433 /* IPNDynamicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPNDynamicButton.swift; sourceTree = "<group>"; };
 		AC5634191D992D4200CF8B8F /* IPNTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPNTextField.swift; sourceTree = "<group>"; };
 		ACE77BE21D6F056D008C3C7E /* IPNDynamicLabelText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPNDynamicLabelText.swift; sourceTree = "<group>"; };
 		B305BA1B1D9D54F5000316F2 /* IPNColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPNColor.swift; sourceTree = "<group>"; };
-=======
-		B360BBE71DA11B0400A75B55 /* RHColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RHColor.swift; sourceTree = "<group>"; };
-		B360BBE91DA11B9D00A75B55 /* RHTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RHTextField.swift; sourceTree = "<group>"; };
-		B360BBEB1DA11C2800A75B55 /* RHDynamicLoginText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RHDynamicLoginText.swift; sourceTree = "<group>"; };
->>>>>>> 6c9e7bf6b3ab7cbff639b1367a7aba20828ab4a0
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,16 +108,10 @@
 		AC070EED1D6DAB4B00D8AFF6 /* ViewUtil */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				B305BA1B1D9D54F5000316F2 /* IPNColor.swift */,
 				ACE77BE21D6F056D008C3C7E /* IPNDynamicLabelText.swift */,
 				AC5634191D992D4200CF8B8F /* IPNTextField.swift */,
 				AC47DDBE1DD5C09B00532433 /* IPNDynamicButton.swift */,
-=======
-				B360BBEB1DA11C2800A75B55 /* RHDynamicLoginText.swift */,
-				B360BBE71DA11B0400A75B55 /* RHColor.swift */,
-				B360BBE91DA11B9D00A75B55 /* RHTextField.swift */,
->>>>>>> 6c9e7bf6b3ab7cbff639b1367a7aba20828ab4a0
 			);
 			name = ViewUtil;
 			sourceTree = "<group>";
@@ -238,16 +220,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC070ED01D6DAB3D00D8AFF6 /* ViewController.swift in Sources */,
-<<<<<<< HEAD
 				AC56341A1D992D4200CF8B8F /* IPNTextField.swift in Sources */,
 				B305BA1C1D9D54F5000316F2 /* IPNColor.swift in Sources */,
 				AC47DDBF1DD5C09B00532433 /* IPNDynamicButton.swift in Sources */,
-=======
-				B360BBE81DA11B0400A75B55 /* RHColor.swift in Sources */,
-				B360BBEC1DA11C2800A75B55 /* RHDynamicLoginText.swift in Sources */,
-				B360BBEA1DA11B9D00A75B55 /* RHTextField.swift in Sources */,
->>>>>>> 6c9e7bf6b3ab7cbff639b1367a7aba20828ab4a0
 				AC070ECE1D6DAB3D00D8AFF6 /* AppDelegate.swift in Sources */,
+				ACE77BE31D6F056D008C3C7E /* IPNDynamicLabelText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

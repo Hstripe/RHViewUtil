@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController,UIScrollViewDelegate,RHTextEditDelegate {
+class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate {
     
     
-    @IBOutlet weak var textFieldTest: RHDynamicLoginText!
+    @IBOutlet weak var textFieldTest: IPNDynamicLabelText!
     
-    @IBOutlet weak var textFieldPassword: RHDynamicLoginText!
+    @IBOutlet weak var textFieldPassword: IPNDynamicLabelText!
     
     @IBOutlet weak var dynamicButton: IPNDynamicButton!
     
@@ -37,34 +37,18 @@ class ViewController: UIViewController,UIScrollViewDelegate,RHTextEditDelegate {
         textFieldPassword.returnKeyType = UIReturnKeyType.done
         textFieldPassword.placeHolder = "密码"
         textFieldPassword.secureTextEntry = true
-<<<<<<< HEAD
         dynamicButton.isEnabled = false
         
-=======
-        
-        // 添加手势退出编辑状态，不要能用touch方法替换，响应链传递机制会导致编辑状态错误
-        let tapTouch = UITapGestureRecognizer.init(target: self, action: #selector(tapFunction))
-        self.view.addGestureRecognizer(tapTouch)
     
-    }
->>>>>>> 6c9e7bf6b3ab7cbff639b1367a7aba20828ab4a0
-    
-    func tapFunction() {
-        self.view.endEditing(true)
     }
     
     func textFieldBeginEdit(_ sender: AnyObject) {
         
     }
     
-<<<<<<< HEAD
     func textFieldEndEdit(_ sender: AnyObject) {
 //        self.textFieldTest.resignFirstResponder()
 ////        self.textFieldTest = nil
-=======
-    func textFieldEndEdit(sender: AnyObject) {
-        
->>>>>>> 6c9e7bf6b3ab7cbff639b1367a7aba20828ab4a0
     }
     
     func textFieldEditing(_ sender: AnyObject) {
@@ -122,12 +106,9 @@ class ViewController: UIViewController,UIScrollViewDelegate,RHTextEditDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-<<<<<<< HEAD
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
 
-=======
->>>>>>> 6c9e7bf6b3ab7cbff639b1367a7aba20828ab4a0
 }
 
