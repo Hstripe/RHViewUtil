@@ -9,10 +9,10 @@
 import UIKit
 
 class IPNTextField: UITextField {
-    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
-        let menuController = UIMenuController.sharedMenuController()
-        if (menuController == true){
-            UIMenuController.sharedMenuController().menuVisible = false
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        let menuController: UIMenuController? = UIMenuController.shared
+        if menuController != nil {
+            UIMenuController.shared.isMenuVisible = false
         }
         return false
     }

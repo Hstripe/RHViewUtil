@@ -8,92 +8,97 @@
 
 import UIKit
 
-protocol IPNTextEditDelegate {
-    func textFieldBeginEdit(sender: AnyObject)
-    func textFieldEditing(sender: AnyObject)
-    func textFieldEndEdit(sender: AnyObject)
-    func textFieldEndEditOnExit(sender: AnyObject)
+protocol IPNTextEditDelegate: class {
+    func textFieldBeginEdit(_ sender: AnyObject)
+    func textFieldEditing(_ sender: AnyObject)
+    func textFieldEndEdit(_ sender: AnyObject)
+    func textFieldEndEditOnExit(_ sender: AnyObject)
 }
-
-
 
 class IPNDynamicLabelText: UIView {
     
-    var text : NSString {
+    var text : String {
         get{
             if self.componentLength == 0 {
                 return self.textField!.text!
             }else{
-                return ((self.textField!.text)! as NSString).stringByReplacingOccurrencesOfString(" ", withString: "")
+                return self.textField!.text!.replacingOccurrences(of: " ", with: "")
             }
         }
     }
     
-    var textField : UITextField? = nil
+    var textField: UITextField?
     
     var textLength : NSInteger {
         get{
             if self.componentLength == 0 {
                 return (self.textField!.text?.characters.count)!
             }else{
-                let str : NSString = ((self.textField!.text)! as NSString).stringByReplacingOccurrencesOfString(" ", withString: "")
-                return str.length
+                let str = self.textField!.text!.replacingOccurrences(of: " ", with: "")
+                return str.characters.count
             }
         }
     }
     
-    var label = UILabel.init(frame: CGRectMake(15, 28, 200, 15))
-    var maxlength : NSInteger = 0
-    var componentLength : NSInteger? = 0
-    var secureTextEntry : Bool = false
+    var label = UILabel()
+    var maxlength = 0
+    var componentLength = 0
+    var secureTextEntry = false
     var textColor : UIColor?
-    var keyboardType : UIKeyboardType? = UIKeyboardType.Default
-    var returnKeyType : UIReturnKeyType? = UIReturnKeyType.Default
+    var keyboardType = UIKeyboardType.default
+    var returnKeyType = UIReturnKeyType.default
     var placeHolder : String = ""
-    var delegate : IPNTextEditDelegate?
+    weak var delegate : IPNTextEditDelegate?
     
-    var viewMask : UIView?
-    var isEditing : Bool?
+    var viewMask = UIView()
+    var isEditing = false
+    
+    
+    override func draw(_ rect: CGRect) {
+        
+    }
     
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
         if self.textField == nil {
-            let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapEvent(_:)))
+            let tap = UITapGestureRecognizer(target: self, action: #selector(tapEvent(_:)))
             self.addGestureRecognizer(tap)
             
-            let frame : CGRect = self.bounds
+            let frame = self.bounds
             
-            self.label.font = UIFont.systemFontOfSize(13)
-            self.label.text = self.placeHolder
-            self.label.textColor = kLabelTextColor
-            self.addSubview(self.label)
+            let label = UILabel(frame: CGRect(x: 15, y: 28, width: 200, height: 15))
+            label.font = UIFont.systemFont(ofSize: 13)
+            label.text = self.placeHolder
+            label.textColor = kLabelTextColor
+            self.addSubview(label)
+            self.label = label
             
-            let textView = IPNTextField.init(frame: CGRectMake(15, 26, frame.size.width-30, 15))
+            let textView = IPNTextField(frame: CGRect(x: 15, y: 26, width: frame.size.width-30, height: 15))
             textView.textColor = self.textColor
-            textView.font = UIFont.systemFontOfSize(14)
-            if(self.textColor == true){
+            textView.font = UIFont.systemFont(ofSize: 14)
+            if(self.textColor != nil){
                 textView.textColor = self.textColor
             }else{
                 textView.textColor = kWhiteColor
             }
-            textView.secureTextEntry = self.secureTextEntry
-            textView.clearButtonMode = UITextFieldViewMode.WhileEditing
-            textView.keyboardType = self.keyboardType!
-            textView.returnKeyType = self.returnKeyType!
+            textView.isSecureTextEntry = self.secureTextEntry
+            textView.clearButtonMode = UITextFieldViewMode.whileEditing
+            textView.keyboardType = self.keyboardType
+            textView.returnKeyType = self.returnKeyType
             
-            textView.addTarget(self, action: #selector(textFieldBeginEdit(_:)), forControlEvents: UIControlEvents.EditingDidBegin)
-            textView.addTarget(self, action: #selector(textFieldEditing(_:)), forControlEvents: UIControlEvents.EditingChanged)
-            textView.addTarget(self, action: #selector(textFieldEndEdit(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
-            textView.addTarget(self, action: #selector(textFieldEndEditOnExit(_:)), forControlEvents: UIControlEvents.EditingDidEndOnExit)
+            textView.addTarget(self, action: #selector(textFieldBeginEdit(_:)), for: UIControlEvents.editingDidBegin)
+            textView.addTarget(self, action: #selector(textFieldEditing(_:)), for: UIControlEvents.editingChanged)
+            textView.addTarget(self, action: #selector(textFieldEndEdit(_:)), for: UIControlEvents.editingDidEnd)
+            textView.addTarget(self, action: #selector(textFieldEndEditOnExit(_:)), for: UIControlEvents.editingDidEndOnExit)
             
             self.addSubview(textView)
             self.textField = textView
             
-            let colorView = UIView.init(frame: CGRectMake(15, 46, frame.size.width-30, 0.5))
+            let colorView = UIView(frame: CGRect(x: 15, y: 46, width: frame.size.width-30, height: 0.5))
             
-            if self.textColor == true {
+            if self.textColor != nil {
                 colorView.backgroundColor = self.textColor
             }else{
                 colorView.backgroundColor = kWhiteColor
@@ -102,42 +107,44 @@ class IPNDynamicLabelText: UIView {
         }
     }
     
-    func tapEvent(sender: AnyObject){
-        if self.isEditing == nil {
+    // MARK: - TextFieldEvent
+    
+    func tapEvent(_ sender: AnyObject){
+        if self.isEditing == false {
             self.textField!.becomeFirstResponder()
             print("false")
         }else{
             self.textField?.resignFirstResponder()
             self.refreshStatus()
-            self.isEditing = nil
+            self.isEditing = false
             print("点击点击")
 
         }
     }
     
-    func textFieldBeginEdit(sender: AnyObject){
+    func textFieldBeginEdit(_ sender: AnyObject){
         self.isEditing = true
         self.switchEditing(true)
         self.delegate?.textFieldBeginEdit(self)
         
-        let foregroundView = UIView.init(frame: CGRectMake(15, 26, self.bounds.size.width-50, 15))
-        foregroundView.backgroundColor = UIColor.clearColor()
-        foregroundView.userInteractionEnabled = true;
+        let foregroundView = UIView(frame: CGRect(x: 15, y: 26, width: self.bounds.size.width-50, height: 15))
+        foregroundView.backgroundColor = UIColor.clear
+        foregroundView.isUserInteractionEnabled = true;
         self.addSubview(foregroundView)
         self.viewMask = foregroundView
     }
     
-    func textFieldEditing(sender: AnyObject) {
-        //self.textProcessing()
+    func textFieldEditing(_ sender: AnyObject) {
+        self.textProcessing()
         self.delegate?.textFieldEditing(self)
     }
     
-    func textFieldEndEdit(sender: AnyObject){
+    func textFieldEndEdit(_ sender: AnyObject){
         self.refreshStatus()
         self.delegate?.textFieldEndEdit(self)
     }
     
-    func textFieldEndEditOnExit(sender: AnyObject){
+    func textFieldEndEditOnExit(_ sender: AnyObject){
         self.delegate?.textFieldEndEditOnExit(self)
     }
     
@@ -149,47 +156,51 @@ class IPNDynamicLabelText: UIView {
         
         if self.componentLength == 0 {  // 无分割
             if self.maxlength > 0 && self.textLength > self.maxlength { // 默认键盘
-                textFieldTxt = ((textFieldTxt! as NSString).substringToIndex(self.maxlength) as String)
+                textFieldTxt = textFieldTxt!.substring(to: (textFieldTxt?.index((textFieldTxt?.startIndex)!, offsetBy: self.maxlength))!)
+            }
+        }else{
+            let pureStr = textFieldTxt!.replacingOccurrences(of: " ", with: "")
+            if pureStr.characters.count % self.componentLength == 1 && pureStr.characters.count > 1 && textFieldTxt![(textFieldTxt!.endIndex)] != " " {
+                let str = pureStr.substring(from: pureStr.index(after: pureStr.startIndex))
+                let cha = " \(str)"
+                let result = (textFieldTxt! as NSString).replacingCharacters(in: NSRange(location: (textFieldTxt?.characters.count)!-1, length: 1), with: cha)
+                textFieldTxt = result
+            }
             
-            }else{
-                let pureStr : NSString = (textFieldTxt! as NSString).stringByReplacingOccurrencesOfString(" ", withString: "")
-                
-                if pureStr.length % self.componentLength! == 1 && pureStr.length > 1 && textFieldTxt![(textFieldTxt!.endIndex)] != " " {
-                    let str = " \(pureStr.substringFromIndex(pureStr.length - 1))"
-                    textFieldTxt = (textFieldTxt! as NSString).stringByReplacingCharactersInRange(NSMakeRange(txtLength! - 1, 1), withString: str)
+            if txtLength! > 0 {
+                if self.textLength > self.maxlength {
+                    textFieldTxt = (textFieldTxt! as NSString).replacingCharacters(in: NSMakeRange(txtLength! - 1, 1), with: "")
                 }
                 
-                if txtLength > 0 {
-                    if self.textLength > self.maxlength {
-                        textFieldTxt = (textFieldTxt! as NSString).stringByReplacingCharactersInRange(NSMakeRange(txtLength! - 1, 1), withString: "")
-                    }
-                    
-                    if (textFieldTxt! as NSString).substringFromIndex(txtLength! - 1) == " " {
-                        textFieldTxt = (textFieldTxt! as NSString).stringByReplacingCharactersInRange(NSMakeRange(txtLength! - 1, 1), withString: "")
-                    }
+                if (textFieldTxt! as NSString).substring(from: txtLength! - 1) == " " {
+                    textFieldTxt = (textFieldTxt! as NSString).replacingCharacters(in: NSMakeRange(txtLength! - 1, 1), with: "")
                 }
             }
         }
     }
     
-
-     func switchEditing(isEditing:Bool){
+     // Mark: - InstanceMethods
+     func switchEditing(_ isEditing:Bool){
         let animationDuration = 0.30
         UIView.beginAnimations("MoveLabel", context: nil)
         UIView.setAnimationDuration(animationDuration)
-        if self.isEditing == false {
-            self.label.frame = CGRectMake(15, 28, 200, 15)
+        if isEditing == false {
+            self.label.frame = CGRect(x: 15, y: 28, width: 200, height: 15)
         }else{
-            self.label.frame = CGRectMake(15, 5, 200, 15)
+            self.label.frame = CGRect(x: 15, y: 5, width: 200, height: 15)
         }
         UIView.commitAnimations()
+    }
+    
+    func hideKeyBoard(sender: AnyObject){
+        self.delegate?.textFieldEndEdit(self)
     }
 
 
     // 界面刷新，删掉蒙层，标签还原
     func refreshStatus() {
         self.isEditing = false
-        self.viewMask?.removeFromSuperview()
+        self.viewMask.removeFromSuperview()
         
         if (self.textField!.text?.isEmpty)! {
             self.switchEditing(false)
