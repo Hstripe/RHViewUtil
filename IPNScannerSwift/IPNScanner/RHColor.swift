@@ -1,8 +1,8 @@
 //
-//  IPNColor.swift
+//  RHColor.swift
 //  IPNScanner
 //
-//  Created by 黄睿 on 2016/9/28.
+//  Created by 黄睿 on 16/10/2.
 //  Copyright © 2016年 iPayNow. All rights reserved.
 //
 
@@ -23,6 +23,12 @@ let kTxtBorderColor = UIColor(red: 74.0/255, green: 74.0/255, blue: 74.0/255, al
 let kBorderColor = UIColor(red: 208.0/255, green: 208.0/255, blue: 208.0/255, alpha: 1.0)
 let kWhiteButtonBorderColor = UIColor(red: 196.0/255, green: 196.0/255, blue: 196.0/255, alpha: 1.0)
 
+<<<<<<< HEAD:IPNScannerSwift/IPNScanner/IPNColor.swift
 let kNavigativeColor = UIColor(red: 31.0/255, green: 33.0/255, blue: 48.0/255, alpha: 1.0)
 let kActiveColor = UIColor(red: 209.0/255, green: 17.0/255, blue: 29.0/255, alpha: 1.0)
 let kCellLineColor = UIColor(red:  93.0/255, green: 93.0/255, blue: 93.0/255, alpha: 1.0)
+=======
+let kNavigativeColor = UIColor.init(red: 31.0/255, green: 33.0/255, blue: 48.0/255, alpha: 1.0)
+let kActiveColor = UIColor.init(red: 209.0/255, green: 17.0/255, blue: 29.0/255, alpha: 1.0)
+let kCellLineColor = UIColor.init(red:  93.0/255, green: 93.0/255, blue: 93.0/255, alpha: 1.0)
+>>>>>>> 6c9e7bf6b3ab7cbff639b1367a7aba20828ab4a0:IPNScannerSwift/IPNScanner/RHColor.swift

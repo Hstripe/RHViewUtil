@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
+=======
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+>>>>>>> 6c9e7bf6b3ab7cbff639b1367a7aba20828ab4a0
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
@@ -21,12 +26,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dd7-BC-6H0" customClass="IPNDynamicLabelText" customModule="IPNScanner" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dd7-BC-6H0" customClass="RHDynamicLoginText" customModule="IPNScanner" customModuleProvider="target">
                                 <rect key="frame" x="47" y="133" width="271" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oSz-qf-0P7" customClass="IPNDynamicLabelText" customModule="IPNScanner" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oSz-qf-0P7" customClass="RHDynamicLoginText" customModule="IPNScanner" customModuleProvider="target">
                                 <rect key="frame" x="47" y="214" width="271" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -40,9 +45,14 @@
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+<<<<<<< HEAD
                         <outlet property="dynamicButton" destination="5xO-tn-Wki" id="7YQ-2t-VWi"/>
                         <outlet property="textFieldPassword" destination="oSz-qf-0P7" id="jQM-E9-VKU"/>
                         <outlet property="textFieldTest" destination="dd7-BC-6H0" id="Krl-2D-GCe"/>
+=======
+                        <outlet property="textFieldPassword" destination="oSz-qf-0P7" id="zkZ-ab-fYF"/>
+                        <outlet property="textFieldTest" destination="dd7-BC-6H0" id="5A0-ty-5y6"/>
+>>>>>>> 6c9e7bf6b3ab7cbff639b1367a7aba20828ab4a0
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
