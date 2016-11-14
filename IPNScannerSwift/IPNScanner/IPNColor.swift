@@ -26,3 +26,4 @@ let kWhiteButtonBorderColor = UIColor(red: 196.0/255, green: 196.0/255, blue: 19
 let kNavigativeColor = UIColor(red: 31.0/255, green: 33.0/255, blue: 48.0/255, alpha: 1.0)
 let kActiveColor = UIColor(red: 209.0/255, green: 17.0/255, blue: 29.0/255, alpha: 1.0)
 let kCellLineColor = UIColor(red:  93.0/255, green: 93.0/255, blue: 93.0/255, alpha: 1.0)
+

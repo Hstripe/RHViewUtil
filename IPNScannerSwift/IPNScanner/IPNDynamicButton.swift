@@ -15,41 +15,41 @@ class IPNDynamicButton: UIButton {
    
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        if self.shouldHideBoarder {
-            self.setTitleColor(kLabelColor, for: .disabled)
-            self.setTitleColor(kActiveColor, for: .normal)
+        if shouldHideBoarder {
+            setTitleColor(kLabelColor, for: .disabled)
+            setTitleColor(kActiveColor, for: .normal)
         } else {
-            if self.isWhiteBoard {
-                self.setTitleColor(kWhiteColor, for: .disabled)
+            if isWhiteBoard {
+                setTitleColor(kWhiteColor, for: .disabled)
             } else {
-                 self.setTitleColor(kLabelColor, for: .disabled)
+                 setTitleColor(kLabelColor, for: .disabled)
             }
-            self.setTitleColor(UIColor.white, for: .normal)
-            self.layer.cornerRadius = 2
-            self.layer.masksToBounds = true
+            setTitleColor(UIColor.white, for: .normal)
+            layer.cornerRadius = 2
+            layer.masksToBounds = true
         }
     }
     
     override var isEnabled: Bool {
         set{
             super.isEnabled = newValue
-            if !self.shouldHideBoarder {
-                if self.isEnabled == true {
-                    self.backgroundColor = kActiveColor
-                    self.layer.borderColor = UIColor.clear.cgColor
-                    self.layer.borderWidth = 0.0
+            if !shouldHideBoarder {
+                if isEnabled == true {
+                    backgroundColor = kActiveColor
+                    layer.borderColor = UIColor.clear.cgColor
+                    layer.borderWidth = 0.0
                 } else {
-                    self.layer.borderWidth = 0.5
-                    self.backgroundColor = UIColor.clear
-                    if self.isWhiteBoard {
-                        self.layer.borderColor = kWhiteColor.cgColor
+                    layer.borderWidth = 0.5
+                    backgroundColor = UIColor.clear
+                    if isWhiteBoard {
+                        layer.borderColor = kWhiteColor.cgColor
                     } else {
-                        self.layer.borderColor = kButtonBorderColor.cgColor
+                        layer.borderColor = kButtonBorderColor.cgColor
                     }
                 }
-                self.setNeedsDisplay()
+                setNeedsDisplay()
             } else {
-                self.backgroundColor = UIColor.clear
+                backgroundColor = UIColor.clear
             }
         }
         get{

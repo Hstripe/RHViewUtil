@@ -17,16 +17,8 @@ class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate 
     
     @IBOutlet weak var dynamicButton: IPNDynamicButton!
     
-    var scrollView = UIScrollView()
-    var view1 = UIView()
-    var view2 = UIView()
-    var view3 = UIView()
-    var width : CGFloat?
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        width = self.view.frame.size.width
         textFieldTest.delegate = self
         textFieldTest.maxlength = 20
         textFieldTest.returnKeyType = UIReturnKeyType.next
@@ -38,7 +30,6 @@ class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate 
         textFieldPassword.placeHolder = "密码"
         textFieldPassword.secureTextEntry = true
         dynamicButton.isEnabled = false
-        
     
     }
     
@@ -60,54 +51,18 @@ class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate 
     }
     
     func textFieldEndEditOnExit(_ sender: AnyObject) {
-        if self.textFieldTest.textField == (sender as! NSObject) {
+        if textFieldTest.textField == (sender as! NSObject) {
             self.textFieldPassword.becomeFirstResponder()
         }
     }
     
-//    func createUI(){
-//        let scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-//        scrollView.backgroundColor = UIColor.orange
-//        scrollView.delegate = self
-//        scrollView.contentSize = CGSize(width: self.view.frame.size.width * 3 , height: self.view.frame.size.height)
-//        scrollView.isPagingEnabled = true
-//        self.view.addSubview(scrollView)
-//        self.view1 = UIView.init(frame: CGRect(x: 75, y: 222, width: 225, height: 222))
-//        self.view1.backgroundColor = UIColor.black
-//        self.view2 = UIView.init()
-//        self.view2.frame = CGRect(x: 450, y: 222, width: 225, height: 222)
-//        self.view2.backgroundColor = UIColor.blue
-//        self.view3 = UIView.init(frame: CGRect(x: 825, y: 222, width: 225, height: 222))
-//        self.view3.backgroundColor = UIColor.green
-//        scrollView.addSubview(self.view1)
-//        scrollView.addSubview(self.view2)
-//        scrollView.addSubview(self.view3)
-//        self.scrollView = scrollView
-//    }
-//    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        
-//        let contentOffsetX = (self.scrollView.contentOffset.x)
-//        
-//        let transform1 = CGAffineTransform(rotationAngle: -0.5 * contentOffsetX / width!)
-//        let transform2 = CGAffineTransform(rotationAngle: 0.5 - 0.5 * contentOffsetX / width!)
-//        let transform3 = CGAffineTransform(rotationAngle: 1 - (0.5 * contentOffsetX / width!))
-//        self.view1.transform = transform1.translatedBy(x: -contentOffsetX * 0.3, y: 75 * contentOffsetX / width!)
-//        if contentOffsetX <= width!  {
-//            self.view2.transform = transform2.translatedBy(x: -(contentOffsetX - width!) * 0.3, y: 75 - 75 * contentOffsetX / width!)
-//        }else{
-//            self.view2.transform = transform2.translatedBy(x: -(contentOffsetX - width!) * 0.3, y: 75 * (contentOffsetX - width!) / width!)
-//        }
-//            self.view3.transform = transform3.translatedBy(x: -(contentOffsetX - width! * 2) * 0.3, y: 150-75 * contentOffsetX / width!)
-//    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
 
 }
