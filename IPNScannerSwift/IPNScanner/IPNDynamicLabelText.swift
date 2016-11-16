@@ -15,31 +15,28 @@ protocol IPNTextEditDelegate: class {
     func textFieldEndEditOnExit(_ sender: AnyObject)
 }
 
+@IBDesignable
 class IPNDynamicLabelText: UIView {
     
     var text : String {
-        get{
             if componentLength == 0 {
                 return textField!.text!
             }else{
                 return textField!.text!.replacingOccurrences(of: " ", with: "")
-            }
         }
     }
     
     var textField: UITextField?
     
     var textLength : NSInteger {
-        get{
-            if self.componentLength == 0 {
+            if componentLength == 0 {
                 return (textField!.text?.characters.count)!
             }else{
                 let str = textField!.text!.replacingOccurrences(of: " ", with: "")
                 return str.characters.count
-            }
         }
     }
-    
+
     var label: UILabel!
     var maxlength = 0
     var componentLength = 0
@@ -63,7 +60,7 @@ class IPNDynamicLabelText: UIView {
     
         if textField == nil {
             let tap = UITapGestureRecognizer(target: self, action: #selector(tapEvent(_:)))
-            self.addGestureRecognizer(tap)
+            addGestureRecognizer(tap)
             
             let frame = bounds
             
@@ -71,7 +68,7 @@ class IPNDynamicLabelText: UIView {
             label.font = UIFont.systemFont(ofSize: 13)
             label.text = placeHolder
             label.textColor = kLabelTextColor
-            self.addSubview(label)
+            addSubview(label)
             self.label = label
             
             let textView = IPNTextField(frame: CGRect(x: 15, y: 26, width: frame.size.width-30, height: 15))
@@ -92,7 +89,7 @@ class IPNDynamicLabelText: UIView {
             textView.addTarget(self, action: #selector(textFieldEndEdit(_:)), for: UIControlEvents.editingDidEnd)
             textView.addTarget(self, action: #selector(textFieldEndEditOnExit(_:)), for: UIControlEvents.editingDidEndOnExit)
             
-            self.addSubview(textView)
+            addSubview(textView)
             textField = textView
             
             let colorView = UIView(frame: CGRect(x: 15, y: 46, width: frame.size.width-30, height: 0.5))
@@ -102,7 +99,7 @@ class IPNDynamicLabelText: UIView {
             }else{
                 colorView.backgroundColor = kWhiteColor
             }
-            self.addSubview(colorView)
+            addSubview(colorView)
         }
     }
     
@@ -129,7 +126,7 @@ class IPNDynamicLabelText: UIView {
         let foregroundView = UIView(frame: CGRect(x: 15, y: 26, width: self.bounds.size.width-50, height: 15))
         foregroundView.backgroundColor = UIColor.clear
         foregroundView.isUserInteractionEnabled = true;
-        self.addSubview(foregroundView)
+        addSubview(foregroundView)
         viewMask = foregroundView
     }
     
@@ -192,7 +189,7 @@ class IPNDynamicLabelText: UIView {
     }
     
     func hideKeyBoard(sender: AnyObject){
-        self.delegate?.textFieldEndEdit(self)
+        delegate?.textFieldEndEdit(self)
     }
 
 

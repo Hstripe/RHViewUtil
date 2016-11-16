@@ -15,6 +15,7 @@
 		AC070EE31D6DAB3D00D8AFF6 /* IPNScannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC070EE21D6DAB3D00D8AFF6 /* IPNScannerUITests.swift */; };
 		AC47DDBF1DD5C09B00532433 /* IPNDynamicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC47DDBE1DD5C09B00532433 /* IPNDynamicButton.swift */; };
 		AC56341A1D992D4200CF8B8F /* IPNTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5634191D992D4200CF8B8F /* IPNTextField.swift */; };
+		AC6130251DDC740E00063774 /* RHNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6130241DDC740E00063774 /* RHNavigationViewController.swift */; };
 		ACE77BE31D6F056D008C3C7E /* IPNDynamicLabelText.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE77BE21D6F056D008C3C7E /* IPNDynamicLabelText.swift */; };
 		B305BA1C1D9D54F5000316F2 /* IPNColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B305BA1B1D9D54F5000316F2 /* IPNColor.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		AC070EE41D6DAB3D00D8AFF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC47DDBE1DD5C09B00532433 /* IPNDynamicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPNDynamicButton.swift; sourceTree = "<group>"; };
 		AC5634191D992D4200CF8B8F /* IPNTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPNTextField.swift; sourceTree = "<group>"; };
+		AC6130241DDC740E00063774 /* RHNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RHNavigationViewController.swift; sourceTree = "<group>"; };
 		ACE77BE21D6F056D008C3C7E /* IPNDynamicLabelText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPNDynamicLabelText.swift; sourceTree = "<group>"; };
 		B305BA1B1D9D54F5000316F2 /* IPNColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPNColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,6 +110,7 @@
 		AC070EED1D6DAB4B00D8AFF6 /* ViewUtil */ = {
 			isa = PBXGroup;
 			children = (
+				AC6130241DDC740E00063774 /* RHNavigationViewController.swift */,
 				B305BA1B1D9D54F5000316F2 /* IPNColor.swift */,
 				ACE77BE21D6F056D008C3C7E /* IPNDynamicLabelText.swift */,
 				AC5634191D992D4200CF8B8F /* IPNTextField.swift */,
@@ -220,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC070ED01D6DAB3D00D8AFF6 /* ViewController.swift in Sources */,
+				AC6130251DDC740E00063774 /* RHNavigationViewController.swift in Sources */,
 				AC56341A1D992D4200CF8B8F /* IPNTextField.swift in Sources */,
 				B305BA1C1D9D54F5000316F2 /* IPNColor.swift in Sources */,
 				AC47DDBF1DD5C09B00532433 /* IPNDynamicButton.swift in Sources */,
