@@ -13,6 +13,7 @@
 		AC070ED51D6DAB3D00D8AFF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC070ED41D6DAB3D00D8AFF6 /* Assets.xcassets */; };
 		AC070ED81D6DAB3D00D8AFF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC070ED61D6DAB3D00D8AFF6 /* LaunchScreen.storyboard */; };
 		AC070EE31D6DAB3D00D8AFF6 /* IPNScannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC070EE21D6DAB3D00D8AFF6 /* IPNScannerUITests.swift */; };
+		AC373D741DDEA7D9000B138D /* RHBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC373D731DDEA7D9000B138D /* RHBubbleView.swift */; };
 		AC47DDBF1DD5C09B00532433 /* IPNDynamicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC47DDBE1DD5C09B00532433 /* IPNDynamicButton.swift */; };
 		AC56341A1D992D4200CF8B8F /* IPNTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5634191D992D4200CF8B8F /* IPNTextField.swift */; };
 		AC6130251DDC740E00063774 /* RHNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6130241DDC740E00063774 /* RHNavigationViewController.swift */; };
@@ -41,6 +42,7 @@
 		AC070EDE1D6DAB3D00D8AFF6 /* IPNScannerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IPNScannerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC070EE21D6DAB3D00D8AFF6 /* IPNScannerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPNScannerUITests.swift; sourceTree = "<group>"; };
 		AC070EE41D6DAB3D00D8AFF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC373D731DDEA7D9000B138D /* RHBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RHBubbleView.swift; sourceTree = "<group>"; };
 		AC47DDBE1DD5C09B00532433 /* IPNDynamicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPNDynamicButton.swift; sourceTree = "<group>"; };
 		AC5634191D992D4200CF8B8F /* IPNTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPNTextField.swift; sourceTree = "<group>"; };
 		AC6130241DDC740E00063774 /* RHNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RHNavigationViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				AC6130241DDC740E00063774 /* RHNavigationViewController.swift */,
+				AC373D731DDEA7D9000B138D /* RHBubbleView.swift */,
 				B305BA1B1D9D54F5000316F2 /* IPNColor.swift */,
 				ACE77BE21D6F056D008C3C7E /* IPNDynamicLabelText.swift */,
 				AC5634191D992D4200CF8B8F /* IPNTextField.swift */,
@@ -169,6 +172,7 @@
 				TargetAttributes = {
 					AC070EC91D6DAB3D00D8AFF6 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = J8Q88E5NNS;
 						LastSwiftMigration = 0810;
 					};
 					AC070EDD1D6DAB3D00D8AFF6 = {
@@ -228,6 +232,7 @@
 				B305BA1C1D9D54F5000316F2 /* IPNColor.swift in Sources */,
 				AC47DDBF1DD5C09B00532433 /* IPNDynamicButton.swift in Sources */,
 				AC070ECE1D6DAB3D00D8AFF6 /* AppDelegate.swift in Sources */,
+				AC373D741DDEA7D9000B138D /* RHBubbleView.swift in Sources */,
 				ACE77BE31D6F056D008C3C7E /* IPNDynamicLabelText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,7 +367,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = J8Q88E5NNS;
 				INFOPLIST_FILE = IPNScanner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.ipaynow.IPNScanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -374,7 +381,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = J8Q88E5NNS;
 				INFOPLIST_FILE = IPNScanner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.ipaynow.IPNScanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";

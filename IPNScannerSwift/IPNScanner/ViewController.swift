@@ -18,8 +18,6 @@ class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate 
     @IBOutlet weak var dynamicButton: IPNDynamicButton!
     
     override func viewDidLoad() {
-        
-
         super.viewDidLoad()
         textFieldTest.delegate = self
         textFieldTest.maxlength = 20
@@ -32,8 +30,21 @@ class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate 
         textFieldPassword.placeHolder = "密码"
         textFieldPassword.secureTextEntry = true
         dynamicButton.isEnabled = false
-    
+        view.isUserInteractionEnabled = true
+        
+        let rhView = RHBubbleView.init(point: CGPoint(x: 50,y :50), diameter: 50, withContainView: view)
+        rhView.bubbleColor = UIColor.blue
+        rhView.bubbleTitle = "11"
+        rhView.bubbleCoffient = 20
+        rhView.setUp()
+
     }
+    
+    
+    func justDoIt() {
+
+    }
+    
     
     func textFieldBeginEdit(_ sender: AnyObject) {
         
@@ -63,9 +74,9 @@ class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate 
         // Dispose of any resources that can be recreated.
     }
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        view.endEditing(true)
+//    }
 
 }
 
