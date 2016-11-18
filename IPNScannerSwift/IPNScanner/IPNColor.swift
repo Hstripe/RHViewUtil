@@ -27,3 +27,11 @@ let kNavigativeColor = UIColor(red: 31.0/255, green: 33.0/255, blue: 48.0/255, a
 let kActiveColor = UIColor(red: 209.0/255, green: 17.0/255, blue: 29.0/255, alpha: 1.0)
 let kCellLineColor = UIColor(red:  93.0/255, green: 93.0/255, blue: 93.0/255, alpha: 1.0)
 
+// 十六进制颜色转换
+func hexColor(_ hexValue: UInt) -> UIColor {
+    return UIColor(red: CGFloat((hexValue & 0xFF0000) >> 16) / 255.0, green: CGFloat((hexValue & 0xFF00) >> 8) / 255.0, blue: CGFloat((hexValue & 0xFF)) / 255.0, alpha: 1.0)
+}
+
+func hexColor(_ hexValue: UInt, withAlpha Alpha: CGFloat) -> UIColor {
+    return UIColor(red: CGFloat((hexValue & 0xFF0000) >> 16) / 255.0, green: CGFloat((hexValue & 0xFF00) >> 8) / 255.0, blue: CGFloat((hexValue & 0xFF)) / 255.0, alpha: Alpha)
+}

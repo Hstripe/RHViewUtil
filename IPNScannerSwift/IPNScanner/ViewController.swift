@@ -18,6 +18,8 @@ class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate 
     @IBOutlet weak var dynamicButton: IPNDynamicButton!
     
     override func viewDidLoad() {
+        
+
         super.viewDidLoad()
         textFieldTest.delegate = self
         textFieldTest.maxlength = 20

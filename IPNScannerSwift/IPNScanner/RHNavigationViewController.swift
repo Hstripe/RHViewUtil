@@ -10,7 +10,7 @@ import UIKit
 
 class RHNavigationViewController: UINavigationController,UIGestureRecognizerDelegate {
     
-    let defaultAlphy = 0.7
+    let defaultAlphy = 0.7 // 蒙板视图的默认透明度
     
     var screenWidth: CGFloat {
         return UIScreen.main.bounds.size.width
@@ -20,12 +20,13 @@ class RHNavigationViewController: UINavigationController,UIGestureRecognizerDele
         return UIScreen.main.bounds.size.height
     }
     
-    var forbiddenGestureArray: [String] = []
-    var screenShotImageView: UIImageView!
-    var coverView: UIView!
-    var screenShotImageArray: [UIImage] = []
+
+    var forbiddenGestureArray: [String] = [] // 禁用手势操作的视图控制器数组
+    var screenShotImageView: UIImageView!    // 截图View
+    var coverView: UIView!                   // 蒙板View
+    var screenShotImageArray: [UIImage] = [] // 截图View数组
     var panGesture: UIPanGestureRecognizer!
-    var gestureEnable: Bool = false
+    var gestureEnable: Bool = false          // pop回去的ViewController是否允许手势
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,8 +86,7 @@ class RHNavigationViewController: UINavigationController,UIGestureRecognizerDele
                 self.screenShotImageView.transform = CGAffineTransform(translationX: 0, y: 0)
                 self.coverView.alpha = 0.0
             }, completion: { (Bool) in
-                // 记得清空view的transform,否则下次出现的时候位置不对
-                self.view.transform = CGAffineTransform.identity
+                self.view.transform = CGAffineTransform.identity // 记得清空view的transform,否则下次出现的时候位置不对
                 self.screenShotImageView.removeFromSuperview()
                 self.coverView.removeFromSuperview()
                 self.popViewController(animated: false)
