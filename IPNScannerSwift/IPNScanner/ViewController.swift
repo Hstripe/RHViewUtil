@@ -37,6 +37,7 @@ class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate 
         rhView.bubbleTitle = "11"
         rhView.bubbleCoffient = 20
         rhView.setUp()
+       
 
     }
     

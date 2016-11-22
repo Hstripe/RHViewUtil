@@ -11,9 +11,9 @@ import UIKit
 class RHBubbleView: UIView {
     
     
-    var bubbleColor: UIColor? = UIColor.white
-    var bubbleTitle: String? = ""
-    var bubbleCoffient: CGFloat = 1.0
+    var bubbleColor: UIColor? = UIColor.white // 气泡颜色
+    var bubbleTitle: String? = ""     // 气泡的文字
+    var bubbleCoffient: CGFloat = 1.0 // 气泡可拉长的系数
     
     private var bubbleDiameter: CGFloat = 0.0
     private var bubbleRadius: CGFloat = 0.0
@@ -34,6 +34,7 @@ class RHBubbleView: UIView {
     private var shapeLayer: CAShapeLayer!
     private var bubbleLabel: UILabel!
     
+        
     init(point: CGPoint, diameter: CGFloat, withContainView containView: UIView) {
         super.init(frame: CGRect(x: point.x, y: point.y, width: diameter, height: diameter))
         originalX = point.x
@@ -46,11 +47,12 @@ class RHBubbleView: UIView {
         
     }
     
+       
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setUp() {
+   func setUp() {
         shapeLayer = CAShapeLayer()
         backgroundColor = UIColor.clear
         frontView = UIView(frame: CGRect(x: originalX, y: originalY, width: bubbleDiameter, height: bubbleDiameter))
@@ -76,12 +78,13 @@ class RHBubbleView: UIView {
         containView.addSubview(frontView)
     }
 
-    func handleDrageGesture(_ ges: UIPanGestureRecognizer) {
+   @objc private func handleDrageGesture(_ ges: UIPanGestureRecognizer) {
         let dragPoint = ges.location(in: containView)
-        if ges.state == .began {
+        
+        switch ges.state {
+        case .began:
             backView.isHidden = false
-            
-        } else if ges.state == .changed {
+        case .changed:
             frontView.center = dragPoint
             if bubbleRadius <= 10 {
                 backView.isHidden = true
@@ -89,12 +92,30 @@ class RHBubbleView: UIView {
                 shapeLayer.removeFromSuperlayer()
             }
             figureOutCoordinateAndDisplay()
-        } else {
+        default:
             if bubbleRadius <= 10 {
                 backView.isHidden = true
                 shapeLayer.fillColor = UIColor.clear.cgColor
                 shapeLayer.removeFromSuperlayer()
                 frontView.isHidden = true
+            } else if bubbleRadius > 10 && bubbleRadius <= 15 {
+                UIView.animate(withDuration: 1.8,
+                               delay: 0.0,
+                               usingSpringWithDamping: 0.4,
+                               initialSpringVelocity: 0.0,
+                               options: .curveEaseInOut,
+                               animations: {
+                                self.backView.center = dragPoint
+                                self.frontView.center = dragPoint
+                                self.shapeLayer.fillColor = UIColor.clear.cgColor
+                                self.shapeLayer.removeFromSuperlayer()
+                                self.backView.isHidden = true
+                                self.backView.frame = self.originalBackViewframe
+                                self.bubbleDiameter = self.originalBackViewframe.size.width
+                                self.bubbleRadius = self.bubbleDiameter / 2
+                                self.setNeedsDisplay() 
+                                
+                })
             } else {
                 UIView.animate(withDuration: 1.8,
                                delay: 0.0,
@@ -104,16 +125,15 @@ class RHBubbleView: UIView {
                                animations: {
                                 self.backToOriginal()
                                 self.setNeedsDisplay()
-                               },
-                               completion: { (Bool) in
-                    
-                               })
+                })
             }
+
+            
         }
     }
     
     // 还原值
-    func backToOriginal() {
+  private func backToOriginal() {
         backView.isHidden = true
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.removeFromSuperlayer()
@@ -123,7 +143,7 @@ class RHBubbleView: UIView {
     }
 
     // 计算坐标并展示
-    func figureOutCoordinateAndDisplay() {
+    private func figureOutCoordinateAndDisplay() {
         let x1 = backView.center.x
         let y1 = backView.center.y
         let x2 = frontView.center.x
