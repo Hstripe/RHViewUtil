@@ -18,17 +18,21 @@ protocol IPNTextEditDelegate: class {
 @IBDesignable
 class IPNDynamicLabelText: UIView {
     
-    var text : String {
+    private var text : String {
             if componentLength == 0 {
                 return textField!.text!
             }else{
                 return textField!.text!.replacingOccurrences(of: " ", with: "")
         }
     }
+    private var componentLength = 0
+    private var label: UILabel!
+    private var viewMask: UIView?
+    private var isEditing = false
+
+    public var textField: UITextField?
     
-    var textField: UITextField?
-    
-    var textLength : NSInteger {
+    public var textLength : NSInteger {
             if componentLength == 0 {
                 return (textField!.text?.characters.count)!
             }else{
@@ -36,20 +40,14 @@ class IPNDynamicLabelText: UIView {
                 return str.characters.count
         }
     }
+    public var maxlength = 0
+    public var secureTextEntry = false
+    public var textColor: UIColor?
+    public var keyboardType = UIKeyboardType.default
+    public var returnKeyType = UIReturnKeyType.default
+    public var placeHolder : String = ""
+    public weak var delegate : IPNTextEditDelegate?
 
-    var label: UILabel!
-    var maxlength = 0
-    var componentLength = 0
-    var secureTextEntry = false
-    var textColor: UIColor?
-    var keyboardType = UIKeyboardType.default
-    var returnKeyType = UIReturnKeyType.default
-    var placeHolder : String = ""
-    weak var delegate : IPNTextEditDelegate?
-    
-    var viewMask: UIView?
-    var isEditing = false
-    
     override func draw(_ rect: CGRect) {
         
     }
@@ -94,8 +92,8 @@ class IPNDynamicLabelText: UIView {
             
             let colorView = UIView(frame: CGRect(x: 15, y: 46, width: frame.size.width-30, height: 0.5))
             
-            if textColor != nil {
-                colorView.backgroundColor = self.textColor
+            if let textColor = textColor {
+                colorView.backgroundColor = textColor
             }else{
                 colorView.backgroundColor = kWhiteColor
             }
@@ -105,20 +103,19 @@ class IPNDynamicLabelText: UIView {
     
     // MARK: - TextFieldEvent
     
-    func tapEvent(_ sender: AnyObject){
+    @objc private func tapEvent(_ sender: AnyObject){
         if isEditing == false {
             textField!.becomeFirstResponder()
             print("false")
         }else{
             textField?.resignFirstResponder()
             refreshStatus()
-            isEditing = false
+            // isEditing = false
             print("点击点击")
-
         }
     }
     
-    func textFieldBeginEdit(_ sender: AnyObject){
+    @objc private func textFieldBeginEdit(_ sender: AnyObject){
         isEditing = true
         switchEditing(true)
         delegate?.textFieldBeginEdit(self)
@@ -130,29 +127,30 @@ class IPNDynamicLabelText: UIView {
         viewMask = foregroundView
     }
     
-    func textFieldEditing(_ sender: AnyObject) {
-        textProcessing()
+    @objc private func textFieldEditing(_ sender: AnyObject) {
+         textProcessing()
          delegate?.textFieldEditing(self)
     }
     
-    func textFieldEndEdit(_ sender: AnyObject){
+    @objc private func textFieldEndEdit(_ sender: AnyObject){
         refreshStatus()
         delegate?.textFieldEndEdit(self)
     }
     
-    func textFieldEndEditOnExit(_ sender: AnyObject){
+    @objc private func textFieldEndEditOnExit(_ sender: AnyObject){
         delegate?.textFieldEndEditOnExit(self)
     }
     
     // 对textView中的输入进行文字处理
-    func textProcessing() {
+    private func textProcessing() {
         
         var textFieldTxt = textField!.text
         let txtLength = textField!.text?.characters.count
         
         if componentLength == 0 {  // 无分割
             if maxlength > 0 && textLength > maxlength { // 默认键盘
-                textFieldTxt = textFieldTxt!.substring(to: (textFieldTxt?.index((textFieldTxt?.startIndex)!, offsetBy: maxlength))!)
+                let index = textFieldTxt?.index((textFieldTxt?.startIndex)!, offsetBy: maxlength)
+                textFieldTxt = textFieldTxt!.substring(to: index!)
             }
         }else{
             let pureStr = textFieldTxt!.replacingOccurrences(of: " ", with: "")
@@ -176,8 +174,8 @@ class IPNDynamicLabelText: UIView {
     }
     
      // Mark: - InstanceMethods
-     func switchEditing(_ isEditing:Bool){
-        let animationDuration = 0.30
+     private func switchEditing(_ isEditing:Bool){
+        let animationDuration = 0.50
         UIView.beginAnimations("MoveLabel", context: nil)
         UIView.setAnimationDuration(animationDuration)
         if isEditing == false {
@@ -188,13 +186,13 @@ class IPNDynamicLabelText: UIView {
         UIView.commitAnimations()
     }
     
-    func hideKeyBoard(sender: AnyObject){
+    private func hideKeyBoard(sender: AnyObject){
         delegate?.textFieldEndEdit(self)
     }
 
 
     // 界面刷新，删掉蒙层，标签还原
-    func refreshStatus() {
+    private func refreshStatus() {
         isEditing = false
         viewMask?.removeFromSuperview()
         

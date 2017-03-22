@@ -80,7 +80,6 @@ class RHBubbleView: UIView {
 
    @objc private func handleDrageGesture(_ ges: UIPanGestureRecognizer) {
         let dragPoint = ges.location(in: containView)
-        
         switch ges.state {
         case .began:
             backView.isHidden = false

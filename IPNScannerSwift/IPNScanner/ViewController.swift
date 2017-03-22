@@ -52,8 +52,8 @@ class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate 
     }
     
     func textFieldEndEdit(_ sender: AnyObject) {
-//        self.textFieldTest.resignFirstResponder()
-////        self.textFieldTest = nil
+     //self.textFieldTest.resignFirstResponder()
+     self.textFieldPassword.becomeFirstResponder()
     }
     
     func textFieldEditing(_ sender: AnyObject) {

@@ -11,8 +11,8 @@ import UIKit
 class IPNTextField: UITextField {
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         let menuController: UIMenuController? = UIMenuController.shared
-        if menuController != nil {
-            UIMenuController.shared.isMenuVisible = false
+        if let menuController = menuController {
+            menuController.isMenuVisible = false
         }
         return false
     }

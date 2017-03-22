@@ -49,7 +49,7 @@ class RHNavigationViewController: UINavigationController,UIGestureRecognizerDele
         if visibleViewController == viewControllers[0] {
             return
         }
-        
+
         switch panGesture.state {
         case .began:
             dragBegin()
