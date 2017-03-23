@@ -7,16 +7,15 @@
 //
 
 import UIKit
-
 protocol IPNTextEditDelegate: class {
-    func textFieldBeginEdit(_ sender: AnyObject)
-    func textFieldEditing(_ sender: AnyObject)
-    func textFieldEndEdit(_ sender: AnyObject)
-    func textFieldEndEditOnExit(_ sender: AnyObject)
+    func textFieldBeginEdit(_ textField: IPNDynamicTextField)
+    func textFieldEditing(_ textField: IPNDynamicTextField)
+    func textFieldEndEdit(_ textField: IPNDynamicTextField)
+    func textFieldEndEditOnExit(_ textField: IPNDynamicTextField)
 }
 
 @IBDesignable
-class IPNDynamicLabelText: UIView {
+class IPNDynamicTextField: UIView {
     
     private var text : String {
             if componentLength == 0 {
@@ -30,8 +29,8 @@ class IPNDynamicLabelText: UIView {
     private var viewMask: UIView?
     private var isEditing = false
 
-    public var textField: UITextField?
-    
+    private var textField: UITextField?
+    /** 文字长度 **/
     public var textLength : NSInteger {
             if componentLength == 0 {
                 return (textField!.text?.characters.count)!
@@ -40,12 +39,24 @@ class IPNDynamicLabelText: UIView {
                 return str.characters.count
         }
     }
+    /** 最大输入长度 **/
     public var maxlength = 0
+    /** 密文输入 **/
     public var secureTextEntry = false
+    /** 文字颜色 **/
     public var textColor: UIColor?
+    /** 键盘类型 **/
     public var keyboardType = UIKeyboardType.default
+    /** 返回键类型 **/
     public var returnKeyType = UIReturnKeyType.default
-    public var placeHolder : String = ""
+    /** 占位文字 **/
+    public var placeHolder: String = ""
+    /** 占位文字颜色 **/
+    public var placeHolderColor: UIColor = kLabelColor
+    /** 占位文字弹起颜色 **/
+    public var placeHolderUpColor: UIColor = kLabelColor
+    /** 下划线颜色 **/
+    public var lineColor: UIColor?
     public weak var delegate : IPNTextEditDelegate?
 
     override func draw(_ rect: CGRect) {
@@ -60,19 +71,16 @@ class IPNDynamicLabelText: UIView {
             let tap = UITapGestureRecognizer(target: self, action: #selector(tapEvent(_:)))
             addGestureRecognizer(tap)
             
-            let frame = bounds
-            
             let label = UILabel(frame: CGRect(x: 15, y: 28, width: 200, height: 15))
             label.font = UIFont.systemFont(ofSize: 13)
             label.text = placeHolder
-            label.textColor = kLabelTextColor
+            label.textColor = placeHolderColor
             addSubview(label)
             self.label = label
             
             let textView = IPNTextField(frame: CGRect(x: 15, y: 26, width: frame.size.width-30, height: 15))
-            textView.textColor = textColor
             textView.font = UIFont.systemFont(ofSize: 14)
-            if(textColor != nil){
+            if let textColor = textColor {
                 textView.textColor = textColor
             }else{
                 textView.textColor = kWhiteColor
@@ -82,20 +90,22 @@ class IPNDynamicLabelText: UIView {
             textView.keyboardType = keyboardType
             textView.returnKeyType = returnKeyType
             
-            textView.addTarget(self, action: #selector(textFieldBeginEdit(_:)), for: UIControlEvents.editingDidBegin)
-            textView.addTarget(self, action: #selector(textFieldEditing(_:)), for: UIControlEvents.editingChanged)
-            textView.addTarget(self, action: #selector(textFieldEndEdit(_:)), for: UIControlEvents.editingDidEnd)
-            textView.addTarget(self, action: #selector(textFieldEndEditOnExit(_:)), for: UIControlEvents.editingDidEndOnExit)
+            textView.addTarget(self, action: #selector(beginEdit(_:)), for: UIControlEvents.editingDidBegin)
+            textView.addTarget(self, action: #selector(editing(_:)), for: UIControlEvents.editingChanged)
+            textView.addTarget(self, action: #selector(endEdit(_:)), for: UIControlEvents.editingDidEnd)
+            textView.addTarget(self, action: #selector(endEditOnExit(_:)), for: UIControlEvents.editingDidEndOnExit)
             
             addSubview(textView)
             textField = textView
             
             let colorView = UIView(frame: CGRect(x: 15, y: 46, width: frame.size.width-30, height: 0.5))
             
-            if let textColor = textColor {
+            if let lineColor = lineColor {
+                colorView.backgroundColor = lineColor
+            } else if let textColor = textColor {
                 colorView.backgroundColor = textColor
-            }else{
-                colorView.backgroundColor = kWhiteColor
+            } else {
+                colorView.backgroundColor = kLabelColor
             }
             addSubview(colorView)
         }
@@ -106,16 +116,13 @@ class IPNDynamicLabelText: UIView {
     @objc private func tapEvent(_ sender: AnyObject){
         if isEditing == false {
             textField!.becomeFirstResponder()
-            print("false")
         }else{
             textField?.resignFirstResponder()
             refreshStatus()
-            // isEditing = false
-            print("点击点击")
         }
     }
     
-    @objc private func textFieldBeginEdit(_ sender: AnyObject){
+    @objc private func beginEdit(_ sender: IPNDynamicTextField){
         isEditing = true
         switchEditing(true)
         delegate?.textFieldBeginEdit(self)
@@ -127,17 +134,17 @@ class IPNDynamicLabelText: UIView {
         viewMask = foregroundView
     }
     
-    @objc private func textFieldEditing(_ sender: AnyObject) {
+    @objc private func editing(_ sender: IPNDynamicTextField) {
          textProcessing()
          delegate?.textFieldEditing(self)
     }
     
-    @objc private func textFieldEndEdit(_ sender: AnyObject){
+    @objc private func endEdit(_ sender: IPNDynamicTextField){
         refreshStatus()
         delegate?.textFieldEndEdit(self)
     }
     
-    @objc private func textFieldEndEditOnExit(_ sender: AnyObject){
+    @objc private func endEditOnExit(_ sender: IPNDynamicTextField){
         delegate?.textFieldEndEditOnExit(self)
     }
     
@@ -173,20 +180,35 @@ class IPNDynamicLabelText: UIView {
         }
     }
     
-     // Mark: - InstanceMethods
+    // MARK: - override Responder Method
+    @discardableResult override func becomeFirstResponder() -> Bool {
+        super.becomeFirstResponder()
+        return (self.textField?.becomeFirstResponder())!
+    }
+    
+   @discardableResult override func resignFirstResponder() -> Bool {
+        super.resignFirstResponder()
+        return (self.textField?.resignFirstResponder())!
+    }
+    
+    
+    
+     // MARK: - InstanceMethods
      private func switchEditing(_ isEditing:Bool){
         let animationDuration = 0.50
         UIView.beginAnimations("MoveLabel", context: nil)
         UIView.setAnimationDuration(animationDuration)
         if isEditing == false {
+            label.textColor = placeHolderColor
             label.frame = CGRect(x: 15, y: 28, width: 200, height: 15)
         }else{
+            label.textColor = placeHolderUpColor
             label.frame = CGRect(x: 15, y: 5, width: 200, height: 15)
         }
         UIView.commitAnimations()
     }
     
-    private func hideKeyBoard(sender: AnyObject){
+    private func hideKeyBoard(_ sender: AnyObject){
         delegate?.textFieldEndEdit(self)
     }
 

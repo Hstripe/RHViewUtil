@@ -21,12 +21,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dd7-BC-6H0" customClass="IPNDynamicLabelText" customModule="IPNScanner" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dd7-BC-6H0" customClass="IPNDynamicTextField" customModule="IPNScanner" customModuleProvider="target">
                                 <rect key="frame" x="47" y="133" width="271" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oSz-qf-0P7" customClass="IPNDynamicLabelText" customModule="IPNScanner" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oSz-qf-0P7" customClass="IPNDynamicTextField" customModule="IPNScanner" customModuleProvider="target">
                                 <rect key="frame" x="47" y="214" width="271" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -42,7 +42,7 @@
                     <connections>
                         <outlet property="dynamicButton" destination="5xO-tn-Wki" id="7YQ-2t-VWi"/>
                         <outlet property="textFieldPassword" destination="oSz-qf-0P7" id="jQM-E9-VKU"/>
-                        <outlet property="textFieldTest" destination="dd7-BC-6H0" id="Krl-2D-GCe"/>
+                        <outlet property="textFieldUserName" destination="dd7-BC-6H0" id="nmD-bt-oKn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

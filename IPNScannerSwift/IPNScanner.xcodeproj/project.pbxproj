@@ -17,7 +17,7 @@
 		AC47DDBF1DD5C09B00532433 /* IPNDynamicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC47DDBE1DD5C09B00532433 /* IPNDynamicButton.swift */; };
 		AC56341A1D992D4200CF8B8F /* IPNTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5634191D992D4200CF8B8F /* IPNTextField.swift */; };
 		AC6130251DDC740E00063774 /* RHNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6130241DDC740E00063774 /* RHNavigationViewController.swift */; };
-		ACE77BE31D6F056D008C3C7E /* IPNDynamicLabelText.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE77BE21D6F056D008C3C7E /* IPNDynamicLabelText.swift */; };
+		ACE77BE31D6F056D008C3C7E /* IPNDynamicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE77BE21D6F056D008C3C7E /* IPNDynamicTextField.swift */; };
 		B305BA1C1D9D54F5000316F2 /* IPNColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B305BA1B1D9D54F5000316F2 /* IPNColor.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +46,7 @@
 		AC47DDBE1DD5C09B00532433 /* IPNDynamicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPNDynamicButton.swift; sourceTree = "<group>"; };
 		AC5634191D992D4200CF8B8F /* IPNTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPNTextField.swift; sourceTree = "<group>"; };
 		AC6130241DDC740E00063774 /* RHNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RHNavigationViewController.swift; sourceTree = "<group>"; };
-		ACE77BE21D6F056D008C3C7E /* IPNDynamicLabelText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPNDynamicLabelText.swift; sourceTree = "<group>"; };
+		ACE77BE21D6F056D008C3C7E /* IPNDynamicTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPNDynamicTextField.swift; sourceTree = "<group>"; };
 		B305BA1B1D9D54F5000316F2 /* IPNColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPNColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,7 +115,7 @@
 				AC6130241DDC740E00063774 /* RHNavigationViewController.swift */,
 				AC373D731DDEA7D9000B138D /* RHBubbleView.swift */,
 				B305BA1B1D9D54F5000316F2 /* IPNColor.swift */,
-				ACE77BE21D6F056D008C3C7E /* IPNDynamicLabelText.swift */,
+				ACE77BE21D6F056D008C3C7E /* IPNDynamicTextField.swift */,
 				AC5634191D992D4200CF8B8F /* IPNTextField.swift */,
 				AC47DDBE1DD5C09B00532433 /* IPNDynamicButton.swift */,
 			);
@@ -233,7 +233,7 @@
 				AC47DDBF1DD5C09B00532433 /* IPNDynamicButton.swift in Sources */,
 				AC070ECE1D6DAB3D00D8AFF6 /* AppDelegate.swift in Sources */,
 				AC373D741DDEA7D9000B138D /* RHBubbleView.swift in Sources */,
-				ACE77BE31D6F056D008C3C7E /* IPNDynamicLabelText.swift in Sources */,
+				ACE77BE31D6F056D008C3C7E /* IPNDynamicTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

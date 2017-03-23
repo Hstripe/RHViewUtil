@@ -147,7 +147,7 @@ class RHNavigationViewController: UINavigationController,UIGestureRecognizerDele
     }
     
     
-    override func popViewController(animated: Bool) -> UIViewController? {
+     @discardableResult override func popViewController(animated: Bool) -> UIViewController? {
         let count = viewControllers.count
         var className = ""
         if count >= 2 {

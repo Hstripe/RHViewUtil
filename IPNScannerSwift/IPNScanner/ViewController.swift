@@ -8,21 +8,21 @@
 
 import UIKit
 
-class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate {
+class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate,UITextFieldDelegate {
     
     
-    @IBOutlet weak var textFieldTest: IPNDynamicLabelText!
+    @IBOutlet weak var textFieldUserName: IPNDynamicTextField!
     
-    @IBOutlet weak var textFieldPassword: IPNDynamicLabelText!
+    @IBOutlet weak var textFieldPassword: IPNDynamicTextField!
     
     @IBOutlet weak var dynamicButton: IPNDynamicButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textFieldTest.delegate = self
-        textFieldTest.maxlength = 20
-        textFieldTest.returnKeyType = UIReturnKeyType.next
-        textFieldTest.placeHolder = "用户名"
+        textFieldUserName.delegate = self
+        textFieldUserName.maxlength = 20
+        textFieldUserName.returnKeyType = UIReturnKeyType.next
+        textFieldUserName.placeHolder = "用户名"
     
         textFieldPassword.delegate = self
         textFieldPassword.maxlength = 20
@@ -38,41 +38,41 @@ class ViewController: UIViewController,UIScrollViewDelegate,IPNTextEditDelegate 
         rhView.bubbleCoffient = 20
         rhView.setUp()
        
+        let textField = UITextField(frame: CGRect(x: 10, y: 10, width: 30, height: 80))
+        view.addSubview(textField)
 
     }
     
     
-    func justDoIt() {
-
+    
+    
+    func textFieldBeginEdit(_ textField: IPNDynamicTextField) {
+        print("begin")
     }
     
-    
-    func textFieldBeginEdit(_ sender: AnyObject) {
-        
+    func textFieldEndEdit(_ textField: IPNDynamicTextField) {
     }
     
-    func textFieldEndEdit(_ sender: AnyObject) {
-     //self.textFieldTest.resignFirstResponder()
-     self.textFieldPassword.becomeFirstResponder()
-    }
-    
-    func textFieldEditing(_ sender: AnyObject) {
-        if textFieldTest.textLength>0 && textFieldPassword.textLength>8 {
+    func textFieldEditing(_ textField: IPNDynamicTextField) {
+        if textFieldUserName.textLength>0 && textFieldPassword.textLength>8 {
             dynamicButton.isEnabled = true
         } else {
             dynamicButton.isEnabled = false
         }
     }
     
-    func textFieldEndEditOnExit(_ sender: AnyObject) {
-        if textFieldTest.textField == (sender as! NSObject) {
-            self.textFieldPassword.becomeFirstResponder()
+    func textFieldEndEditOnExit(_ textField: IPNDynamicTextField) {
+        print("exite")
+        if textField == textFieldUserName {
+            textFieldPassword.becomeFirstResponder()
         }
+
+    
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
 
 //    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
