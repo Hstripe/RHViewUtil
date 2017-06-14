@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RHViewUtil" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9WG-37-itR" userLabel="用户名" customClass="RHDynamicTextField" customModule="RHViewUtil" customModuleProvider="target">
+                                <rect key="frame" x="51" y="61" width="273" height="77"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="77" id="7UC-O4-iBq"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qH5-2R-opw" userLabel="密码" customClass="RHDynamicTextField" customModule="RHViewUtil" customModuleProvider="target">
+                                <rect key="frame" x="51" y="174" width="273" height="77"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="77" id="AlR-8x-cTb"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="blp-9q-dfY" customClass="RHDynamicButton" customModule="RHViewUtil" customModuleProvider="target">
+                                <rect key="frame" x="73" y="489" width="218" height="34"/>
+                                <state key="normal" title="登录"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qH5-2R-opw" firstAttribute="top" secondItem="9WG-37-itR" secondAttribute="bottom" constant="36" id="5oM-jd-1UD"/>
+                            <constraint firstAttribute="trailing" secondItem="blp-9q-dfY" secondAttribute="trailing" constant="84" id="NnJ-0p-ZJs"/>
+                            <constraint firstAttribute="trailing" secondItem="9WG-37-itR" secondAttribute="trailing" constant="51" id="PMT-kf-DpK"/>
+                            <constraint firstItem="blp-9q-dfY" firstAttribute="top" secondItem="qH5-2R-opw" secondAttribute="bottom" constant="238" id="Rwi-t2-kyg"/>
+                            <constraint firstItem="blp-9q-dfY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-5.5" id="Snz-d5-lSV"/>
+                            <constraint firstAttribute="trailing" secondItem="qH5-2R-opw" secondAttribute="trailing" constant="51" id="TbX-px-1ru"/>
+                            <constraint firstItem="9WG-37-itR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="41" id="ih9-dN-mxr"/>
+                            <constraint firstItem="qH5-2R-opw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nTF-WH-Ryl"/>
+                            <constraint firstItem="9WG-37-itR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="51" id="yfI-bC-lL7"/>
+                            <constraint firstItem="blp-9q-dfY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="73" id="z5g-T1-co3"/>
+                            <constraint firstItem="9WG-37-itR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zQZ-M4-qEp"/>
+                            <constraint firstItem="qH5-2R-opw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="51" id="zlo-2M-YyZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dynamicButton" destination="blp-9q-dfY" id="F2m-Zk-Win"/>
+                        <outlet property="textFieldPassword" destination="qH5-2R-opw" id="Ijj-5U-pL5"/>
+                        <outlet property="textFieldUserName" destination="9WG-37-itR" id="Efh-Ch-mOb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
+        </scene>
+    </scenes>
+</document>
