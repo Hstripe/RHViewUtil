@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B3B135EE1F0A44E600A72181 /* RHAppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B135ED1F0A44E600A72181 /* RHAppUtil.swift */; };
 		B3D8AD5E1EF15D4F00C08C2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8AD5D1EF15D4F00C08C2C /* AppDelegate.swift */; };
 		B3D8AD601EF15D4F00C08C2C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8AD5F1EF15D4F00C08C2C /* ViewController.swift */; };
 		B3D8AD631EF15D4F00C08C2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3D8AD611EF15D4F00C08C2C /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B3B135ED1F0A44E600A72181 /* RHAppUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RHAppUtil.swift; sourceTree = "<group>"; };
 		B3D8AD5A1EF15D4F00C08C2C /* RHViewUtil.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RHViewUtil.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D8AD5D1EF15D4F00C08C2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3D8AD5F1EF15D4F00C08C2C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				B3D8AD731EF15E5500C08C2C /* RHDynamicButton.swift */,
 				B3D8AD751EF15EB500C08C2C /* RHColor.swift */,
 				B3D8AD771EF15EEB00C08C2C /* RHExtension.swift */,
+				B3B135ED1F0A44E600A72181 /* RHAppUtil.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				B3D8AD741EF15E5500C08C2C /* RHDynamicButton.swift in Sources */,
 				B3D8AD7B1EF1619900C08C2C /* RHTextField.swift in Sources */,
 				B3D8AD7D1EF1620800C08C2C /* RHDynamicTextField.swift in Sources */,
+				B3B135EE1F0A44E600A72181 /* RHAppUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +222,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -244,12 +250,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -273,6 +280,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -293,10 +302,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -311,7 +321,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RyanHuang.RHViewUtil;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -326,7 +336,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RyanHuang.RHViewUtil;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -350,6 +360,7 @@
 				B3D8AD6E1EF15D4F00C08C2C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
