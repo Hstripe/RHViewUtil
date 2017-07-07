@@ -90,10 +90,10 @@ class RHDynamicTextField: UIView {
             textView.keyboardType = keyboardType
             textView.returnKeyType = returnKeyType
             
-            textView.addTarget(self, action: #selector(beginEdit(_:)), for: UIControlEvents.editingDidBegin)
-            textView.addTarget(self, action: #selector(editing(_:)), for: UIControlEvents.editingChanged)
-            textView.addTarget(self, action: #selector(endEdit(_:)), for: UIControlEvents.editingDidEnd)
-            textView.addTarget(self, action: #selector(endEditOnExit(_:)), for: UIControlEvents.editingDidEndOnExit)
+            textView.addTarget(self, action: #selector(beginEdit), for: UIControlEvents.editingDidBegin)
+            textView.addTarget(self, action: #selector(editing), for: UIControlEvents.editingChanged)
+            textView.addTarget(self, action: #selector(endEdit), for: UIControlEvents.editingDidEnd)
+            textView.addTarget(self, action: #selector(endEditOnExit), for: UIControlEvents.editingDidEndOnExit)
             
             addSubview(textView)
             textField = textView
