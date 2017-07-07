@@ -76,6 +76,8 @@ class RHBubbleView: UIView {
     
         containView.addSubview(backView)
         containView.addSubview(frontView)
+
+
     }
 
    @objc private func handleDrageGesture(_ ges: UIPanGestureRecognizer) {

@@ -29,6 +29,12 @@ class ViewController: UIViewController {
         textFieldPassword.secureTextEntry = true
         dynamicButton.isEnabled = false
         view.isUserInteractionEnabled = true
+
+
+
+
+
+
     }
     
     
