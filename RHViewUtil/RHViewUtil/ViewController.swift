@@ -31,10 +31,6 @@ class ViewController: UIViewController {
         view.isUserInteractionEnabled = true
 
 
-
-
-
-
     }
     
     

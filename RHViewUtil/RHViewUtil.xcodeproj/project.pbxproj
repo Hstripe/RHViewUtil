@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13E660448616C987B0214F3A /* RHColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E6605BEBE14DE590C002C6 /* RHColorExtension.swift */; };
+		13E667674B6A079BD222E495 /* RHViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E66910D8FB516EE50CC575 /* RHViewExtension.swift */; };
+		13E66DF348C20490F308B60C /* RHViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E6687AEE9A48CC558F5C06 /* RHViewControllerExtension.swift */; };
 		B3B135EE1F0A44E600A72181 /* RHAppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B135ED1F0A44E600A72181 /* RHAppUtil.swift */; };
 		B3D8AD5E1EF15D4F00C08C2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8AD5D1EF15D4F00C08C2C /* AppDelegate.swift */; };
 		B3D8AD601EF15D4F00C08C2C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8AD5F1EF15D4F00C08C2C /* ViewController.swift */; };
@@ -17,12 +20,14 @@
 		B3D8AD721EF15D8B00C08C2C /* RHBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8AD701EF15D8B00C08C2C /* RHBubbleView.swift */; };
 		B3D8AD741EF15E5500C08C2C /* RHDynamicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8AD731EF15E5500C08C2C /* RHDynamicButton.swift */; };
 		B3D8AD761EF15EB500C08C2C /* RHColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8AD751EF15EB500C08C2C /* RHColor.swift */; };
-		B3D8AD781EF15EEB00C08C2C /* RHExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8AD771EF15EEB00C08C2C /* RHExtension.swift */; };
 		B3D8AD7B1EF1619900C08C2C /* RHTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8AD7A1EF1619900C08C2C /* RHTextField.swift */; };
 		B3D8AD7D1EF1620800C08C2C /* RHDynamicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8AD7C1EF1620800C08C2C /* RHDynamicTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13E6605BEBE14DE590C002C6 /* RHColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RHColorExtension.swift; sourceTree = "<group>"; };
+		13E6687AEE9A48CC558F5C06 /* RHViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RHViewControllerExtension.swift; sourceTree = "<group>"; };
+		13E66910D8FB516EE50CC575 /* RHViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RHViewExtension.swift; sourceTree = "<group>"; };
 		B3B135ED1F0A44E600A72181 /* RHAppUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RHAppUtil.swift; sourceTree = "<group>"; };
 		B3D8AD5A1EF15D4F00C08C2C /* RHViewUtil.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RHViewUtil.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D8AD5D1EF15D4F00C08C2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -35,7 +40,6 @@
 		B3D8AD701EF15D8B00C08C2C /* RHBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RHBubbleView.swift; sourceTree = "<group>"; };
 		B3D8AD731EF15E5500C08C2C /* RHDynamicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RHDynamicButton.swift; sourceTree = "<group>"; };
 		B3D8AD751EF15EB500C08C2C /* RHColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RHColor.swift; sourceTree = "<group>"; };
-		B3D8AD771EF15EEB00C08C2C /* RHExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RHExtension.swift; sourceTree = "<group>"; };
 		B3D8AD7A1EF1619900C08C2C /* RHTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RHTextField.swift; sourceTree = "<group>"; };
 		B3D8AD7C1EF1620800C08C2C /* RHDynamicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RHDynamicTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,6 +55,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13E66CF04CDA2129C45231CF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				13E6605BEBE14DE590C002C6 /* RHColorExtension.swift */,
+				13E6687AEE9A48CC558F5C06 /* RHViewControllerExtension.swift */,
+				13E66910D8FB516EE50CC575 /* RHViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B3D8AD511EF15D4F00C08C2C = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +84,7 @@
 		B3D8AD5C1EF15D4F00C08C2C /* RHViewUtil */ = {
 			isa = PBXGroup;
 			children = (
+				13E66CF04CDA2129C45231CF /* Extensions */,
 				B3D8AD791EF1612D00C08C2C /* Util */,
 				B3D8AD5D1EF15D4F00C08C2C /* AppDelegate.swift */,
 				B3D8AD5F1EF15D4F00C08C2C /* ViewController.swift */,
@@ -90,7 +105,6 @@
 				B3D8AD7C1EF1620800C08C2C /* RHDynamicTextField.swift */,
 				B3D8AD731EF15E5500C08C2C /* RHDynamicButton.swift */,
 				B3D8AD751EF15EB500C08C2C /* RHColor.swift */,
-				B3D8AD771EF15EEB00C08C2C /* RHExtension.swift */,
 				B3B135ED1F0A44E600A72181 /* RHAppUtil.swift */,
 			);
 			path = Util;
@@ -172,11 +186,13 @@
 				B3D8AD721EF15D8B00C08C2C /* RHBubbleView.swift in Sources */,
 				B3D8AD761EF15EB500C08C2C /* RHColor.swift in Sources */,
 				B3D8AD5E1EF15D4F00C08C2C /* AppDelegate.swift in Sources */,
-				B3D8AD781EF15EEB00C08C2C /* RHExtension.swift in Sources */,
 				B3D8AD741EF15E5500C08C2C /* RHDynamicButton.swift in Sources */,
 				B3D8AD7B1EF1619900C08C2C /* RHTextField.swift in Sources */,
 				B3D8AD7D1EF1620800C08C2C /* RHDynamicTextField.swift in Sources */,
 				B3B135EE1F0A44E600A72181 /* RHAppUtil.swift in Sources */,
+				13E660448616C987B0214F3A /* RHColorExtension.swift in Sources */,
+				13E66DF348C20490F308B60C /* RHViewControllerExtension.swift in Sources */,
+				13E667674B6A079BD222E495 /* RHViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
